@@ -1,0 +1,16 @@
+OBD Diagnosis Specification - Sample
+
+Monitor ID: MON_HV_ISO_01
+Related DTC: P0ABC
+Function: HV battery isolation monitoring.
+Enable Conditions: Vehicle awake, HV system active, no service mode, battery voltage above minimum threshold.
+Inhibit Conditions: Charging connector service mode active or insulation measurement unavailable.
+Detection Logic: Set DTC P0ABC if isolation resistance is below calibrated threshold for two consecutive monitoring cycles.
+Healing Logic: Clear after three consecutive passed cycles and no active isolation fault.
+
+Monitor ID: MON_BATT_02
+Related DTC: P0DEF
+Function: Battery sensor plausibility monitoring.
+Enable Conditions: Vehicle awake and battery control unit online.
+Detection Logic: Sensor value is considered implausible if signal jump exceeds calibrated gradient threshold.
+Healing Logic: TBD.
