@@ -1,0 +1,4 @@
+Testcase_ID,DTC_Code,Monitor_ID,Preconditions,Test_Steps,Expected_Result,Test_Status,Evidence_Link,SW_Version
+TC_OBD_001,P0ABC,MON_HV_ISO_01,Vehicle awake and HV active,Simulate isolation resistance below threshold,DTC P0ABC is stored as confirmed,Passed,test_report_001.pdf,SW_1.2.3
+TC_OBD_002,P0DEF,MON_BATT_02,Vehicle awake,Inject implausible battery sensor value,,Blocked,,SW_1.2.3
+TC_OBD_003,P0123,MON_UNKNOWN,Vehicle awake,Run unrelated test,DTC P0123 is stored,Passed,test_report_003.pdf,SW_1.2.3
