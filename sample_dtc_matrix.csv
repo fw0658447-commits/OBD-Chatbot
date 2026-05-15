@@ -1,0 +1,4 @@
+DTC_Code,DTC_Name,Description,Monitor_ID,Storage_Logic,Healing_Logic,Severity,Status,Evidence_Link,SW_Version
+P0ABC,HV Battery Isolation Fault,Isolation resistance below threshold,MON_HV_ISO_01,Confirmed after 2 cycles,Cleared after 3 passed cycles,High,Open,,SW_1.2.3
+P0DEF,Battery Sensor Plausibility,Sensor signal implausible,MON_BATT_02,,Cleared after 3 passed cycles,Medium,Closed,,SW_1.2.3
+P0AAA,Charging Communication Fault,Communication timeout during charging,,Confirmed after 1 cycle,,High,Open,,SW_1.2.3
