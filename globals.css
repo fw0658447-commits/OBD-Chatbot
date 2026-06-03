@@ -1,0 +1,46 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #121417;
+  --muted: #667085;
+  --border: #d9dde5;
+  --accent: #111827;
+  --danger: #b42318;
+  --success: #067647;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: Arial, sans-serif; }
+main { padding: 28px; }
+button, input, select { font: inherit; }
+button { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: var(--card); cursor: pointer; }
+button.primary { background: var(--accent); color: white; border-color: var(--accent); }
+button.danger { background: var(--danger); color: white; border-color: var(--danger); }
+button:disabled { opacity: .55; cursor: not-allowed; }
+input, select { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; background: white; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { color: var(--muted); font-size: 13px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.muted { color: var(--muted); }
+.good { color: var(--success); }
+.bad { color: var(--danger); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
+.tab { border-radius: 999px; }
+.tab.active { background: var(--accent); color: white; }
+.kpi { font-size: 26px; font-weight: 700; margin: 6px 0; }
+.chartBox { height: 420px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+textarea {
+  width: 100%;
+  min-height: 180px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+}
