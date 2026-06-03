@@ -1,0 +1,101 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: trading_postgres
+    environment:
+      POSTGRES_USER: trading_user
+      POSTGRES_PASSWORD: trading_password
+      POSTGRES_DB: trading_cockpit
+    ports:
+      - "5432:5432"
+    volumes:
+      - trading_postgres_data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: redis:7
+    container_name: trading_redis
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./backend
+    container_name: trading_backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://trading_user:trading_password@postgres:5432/trading_cockpit
+      REDIS_URL: redis://redis:6379
+      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-mock}
+      MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
+      BOT_MODE: ${BOT_MODE:-paper}
+      MODEL_STORAGE_PATH: ${MODEL_STORAGE_PATH:-/tmp/trading-cockpit-models}
+      QUOTE_CACHE_TTL_SECONDS: ${QUOTE_CACHE_TTL_SECONDS:-10}
+      CANDLE_CACHE_TTL_SECONDS: ${CANDLE_CACHE_TTL_SECONDS:-60}
+      MARKET_PROVIDER_FALLBACK_ENABLED: ${MARKET_PROVIDER_FALLBACK_ENABLED:-true}
+      BLOCK_TRADES_ON_DATA_QUALITY_FAIL: ${BLOCK_TRADES_ON_DATA_QUALITY_FAIL:-true}
+      MIN_DATA_QUALITY_SCORE: ${MIN_DATA_QUALITY_SCORE:-70}
+      PAPER_SPREAD_BPS: ${PAPER_SPREAD_BPS:-4}
+      PAPER_SLIPPAGE_BPS: ${PAPER_SLIPPAGE_BPS:-2}
+      PAPER_COMMISSION_BPS: ${PAPER_COMMISSION_BPS:-1}
+      PAPER_MIN_COMMISSION: ${PAPER_MIN_COMMISSION:-0}
+      LIVE_TRADING_HARD_LOCKED: ${LIVE_TRADING_HARD_LOCKED:-true}
+      ENFORCE_VALIDATION_GATE: ${ENFORCE_VALIDATION_GATE:-false}
+      MIN_CLOSED_TRADES_FOR_RELEASE: ${MIN_CLOSED_TRADES_FOR_RELEASE:-100}
+      MIN_PROFIT_FACTOR_FOR_RELEASE: ${MIN_PROFIT_FACTOR_FOR_RELEASE:-1.15}
+      MIN_WIN_RATE_FOR_RELEASE: ${MIN_WIN_RATE_FOR_RELEASE:-45}
+      MAX_DRAWDOWN_PERCENT_FOR_RELEASE: ${MAX_DRAWDOWN_PERCENT_FOR_RELEASE:-12}
+      MIN_EXPECTANCY_PER_TRADE_FOR_RELEASE: ${MIN_EXPECTANCY_PER_TRADE_FOR_RELEASE:-0}
+    depends_on:
+      - postgres
+      - redis
+
+  frontend:
+    build: ./frontend
+    container_name: trading_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-}
+    depends_on:
+      - backend
+
+  worker:
+    build: ./backend
+    container_name: trading_worker
+    command: python -m app.worker.bot_worker
+    environment:
+      DATABASE_URL: postgresql://trading_user:trading_password@postgres:5432/trading_cockpit
+      REDIS_URL: redis://redis:6379
+      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-mock}
+      MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
+      BOT_MODE: ${BOT_MODE:-paper}
+      MODEL_STORAGE_PATH: ${MODEL_STORAGE_PATH:-/tmp/trading-cockpit-models}
+      QUOTE_CACHE_TTL_SECONDS: ${QUOTE_CACHE_TTL_SECONDS:-10}
+      CANDLE_CACHE_TTL_SECONDS: ${CANDLE_CACHE_TTL_SECONDS:-60}
+      MARKET_PROVIDER_FALLBACK_ENABLED: ${MARKET_PROVIDER_FALLBACK_ENABLED:-true}
+      BLOCK_TRADES_ON_DATA_QUALITY_FAIL: ${BLOCK_TRADES_ON_DATA_QUALITY_FAIL:-true}
+      MIN_DATA_QUALITY_SCORE: ${MIN_DATA_QUALITY_SCORE:-70}
+      PAPER_SPREAD_BPS: ${PAPER_SPREAD_BPS:-4}
+      PAPER_SLIPPAGE_BPS: ${PAPER_SLIPPAGE_BPS:-2}
+      PAPER_COMMISSION_BPS: ${PAPER_COMMISSION_BPS:-1}
+      PAPER_MIN_COMMISSION: ${PAPER_MIN_COMMISSION:-0}
+      LIVE_TRADING_HARD_LOCKED: ${LIVE_TRADING_HARD_LOCKED:-true}
+      ENFORCE_VALIDATION_GATE: ${ENFORCE_VALIDATION_GATE:-false}
+      MIN_CLOSED_TRADES_FOR_RELEASE: ${MIN_CLOSED_TRADES_FOR_RELEASE:-100}
+      MIN_PROFIT_FACTOR_FOR_RELEASE: ${MIN_PROFIT_FACTOR_FOR_RELEASE:-1.15}
+      MIN_WIN_RATE_FOR_RELEASE: ${MIN_WIN_RATE_FOR_RELEASE:-45}
+      MAX_DRAWDOWN_PERCENT_FOR_RELEASE: ${MAX_DRAWDOWN_PERCENT_FOR_RELEASE:-12}
+      MIN_EXPECTANCY_PER_TRADE_FOR_RELEASE: ${MIN_EXPECTANCY_PER_TRADE_FOR_RELEASE:-0}
+      BOT_SYMBOLS: ${BOT_SYMBOLS:-BTC/USD,ETH/USD}
+      BOT_TIMEFRAME: ${BOT_TIMEFRAME:-1h}
+      BOT_WORKER_INTERVAL_SECONDS: ${BOT_WORKER_INTERVAL_SECONDS:-60}
+    depends_on:
+      - backend
+      - postgres
+      - redis
+
+volumes:
+  trading_postgres_data:
