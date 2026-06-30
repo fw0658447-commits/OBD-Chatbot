@@ -28,8 +28,12 @@ services:
     environment:
       DATABASE_URL: postgresql://trading_user:trading_password@postgres:5432/trading_cockpit
       REDIS_URL: redis://redis:6379
-      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-mock}
+      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-free}
       MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
+      OPENFIGI_API_KEY: ${OPENFIGI_API_KEY:-}
+      FINNHUB_API_KEY: ${FINNHUB_API_KEY:-}
+      ALPHA_VANTAGE_API_KEY: ${ALPHA_VANTAGE_API_KEY:-}
+      INTERNET_ANALYSIS_PROVIDER: ${INTERNET_ANALYSIS_PROVIDER:-auto}
       BOT_MODE: ${BOT_MODE:-paper}
       MODEL_STORAGE_PATH: ${MODEL_STORAGE_PATH:-/tmp/trading-cockpit-models}
       QUOTE_CACHE_TTL_SECONDS: ${QUOTE_CACHE_TTL_SECONDS:-10}
@@ -58,7 +62,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-}
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-auto}
+      INTERNAL_BACKEND_URL: http://backend:8000
     depends_on:
       - backend
 
@@ -69,8 +74,12 @@ services:
     environment:
       DATABASE_URL: postgresql://trading_user:trading_password@postgres:5432/trading_cockpit
       REDIS_URL: redis://redis:6379
-      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-mock}
+      MARKET_DATA_PROVIDER: ${MARKET_DATA_PROVIDER:-free}
       MARKET_DATA_API_KEY: ${MARKET_DATA_API_KEY:-}
+      OPENFIGI_API_KEY: ${OPENFIGI_API_KEY:-}
+      FINNHUB_API_KEY: ${FINNHUB_API_KEY:-}
+      ALPHA_VANTAGE_API_KEY: ${ALPHA_VANTAGE_API_KEY:-}
+      INTERNET_ANALYSIS_PROVIDER: ${INTERNET_ANALYSIS_PROVIDER:-auto}
       BOT_MODE: ${BOT_MODE:-paper}
       MODEL_STORAGE_PATH: ${MODEL_STORAGE_PATH:-/tmp/trading-cockpit-models}
       QUOTE_CACHE_TTL_SECONDS: ${QUOTE_CACHE_TTL_SECONDS:-10}

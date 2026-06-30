@@ -1,0 +1,14 @@
+import './globals.css';
+
+export const metadata = {
+  title: 'Trading Cockpit',
+  description: 'KI Trading Cockpit MVP'
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="de" suppressHydrationWarning>
+      <body suppressHydrationWarning>{children}</body>
+    </html>
+  );
+}

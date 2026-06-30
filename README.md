@@ -1,4 +1,31 @@
-# Trading Cockpit MVP v1.2.1 — iPadOS / Codespaces Ready
+# Trading Cockpit
+## v1.4 Update - Intelligence, ISIN/WKN Lookup und Empfehlung
+
+Diese Version ergaenzt:
+
+- Instrumenten-Suche nach Ticker, ISIN, WKN, FIGI oder Name
+- OpenFIGI-Mapping fuer Wertpapier-Identifiers
+- Online-News-/Sentiment-Kontext ueber Finnhub/Alpha Vantage
+- klare Empfehlung nach Asset-Auswahl: LONG, SHORT, WATCH oder NO_TRADE
+- Entscheidung: Ja / Nein / Beobachten / Nur klein
+- Risiko-Level: gering / mittel / hoch
+- Checkliste fuer Datenqualitaet, Confidence, Risk Score, Strategie-Signal, CRV und Online-Kontext
+
+Details: `docs/intelligence_recommendations_v14.md`
+
+## v1.3 Update - Paper-Konto, Watchlist und Marktstatus
+
+Diese Version ergaenzt praktische Bedienfunktionen:
+
+- virtuelles Geld einzahlen, auszahlen und Paper-Konto resetten
+- manuelle Paper-Trades direkt aus der UI eroeffnen
+- Watchlist mit Notiz, Alarmkurs und Zielkurs
+- Online-/Offline-Status fuer Backend, Datenbank, Cache und Marktdatenanbieter
+- erweitertes Dashboard mit Equity, Cash, gebundenem Kapital und Providerstatus
+
+Weitere Details: `docs/usability_portfolio_market_status_v13.md`
+
+ MVP v1.2.1 — iPadOS / Codespaces Ready
 
 KI-gestütztes Trading-Cockpit mit Analyse, Watchlist, Paper-Trading-Bot, Risiko-Engine, Backtesting, Monitoring und Validierungs-Gates.
 
@@ -122,3 +149,17 @@ docs/ipados_codespaces_quickstart.md
 ## Sicherheit
 
 Diese Version sendet keine echten Broker-Orders. Sie ist für Analyse, Backtesting, Paper-Trading, Monitoring und Strategievalidierung gedacht.
+
+
+## v1.5 Full-Fix Update
+
+Diese Version behebt iPadOS/Codespaces-API-Probleme mit einem Frontend-Proxy, setzt standardmaessig kostenlose Online-Marktdaten (`MARKET_DATA_PROVIDER=free`), verbessert Paper-Konto/Einzahlung, Online-News-Fallback und Full-System-Diagnose.
+
+Start/Reparatur in Codespaces:
+
+```bash
+cd /workspaces/Trading-Bot
+bash scripts/codespaces_full_fix.sh
+```
+
+Danach Port 3000 fuer das Frontend und Port 8000 fuer `/docs` oeffnen.

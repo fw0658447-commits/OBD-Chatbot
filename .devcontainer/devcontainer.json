@@ -1,0 +1,33 @@
+{
+  "name": "Trading Cockpit iPadOS Codespaces",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "forwardPorts": [3000, 8000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Trading Cockpit Frontend",
+      "onAutoForward": "openBrowser"
+    },
+    "8000": {
+      "label": "Trading Cockpit API",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bash scripts/codespaces_setup.sh",
+  "remoteUser": "root"
+}
