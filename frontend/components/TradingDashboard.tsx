@@ -155,7 +155,9 @@ export function TradingDashboard() {
   const marketOnline = systemStatus.market_data?.status === 'online';
   const backendOnline = systemStatus.backend === 'online';
   const databaseOnline = systemStatus.database === 'online';
-  const storageLabel = databaseOnline ? 'Daten werden gespeichert' : 'Nur dieser Testlauf';
+  const localFileStorage = Boolean(systemStatus.local_persistence?.enabled);
+  const storageReady = databaseOnline || localFileStorage;
+  const storageLabel = databaseOnline ? 'Datenbank aktiv' : localFileStorage ? 'Lokal gespeichert' : 'Nur dieser Testlauf';
 
   async function refreshCore() {
     const [botStatus, overviewData, watchlistData, snapshotData, signalsData, ordersData, riskData, strategyData, modelHealthData, modePerfData, configData, schedulerData, schedulerRunsData, auditData, equityData, statusData, ledgerData] = await Promise.all([
@@ -362,11 +364,12 @@ export function TradingDashboard() {
           <span className={safeMode ? 'pill goodPill' : 'pill badPill'}>{safeMode ? 'Sicherer Modus' : 'Bitte prüfen'}</span>
           <span className={backendOnline ? 'pill goodPill' : 'pill badPill'}>API {backendOnline ? 'online' : 'offline'}</span>
           <span className={marketOnline ? 'pill goodPill' : 'pill badPill'}>Marktdaten {marketOnline ? 'online' : 'offline'}</span>
-          <span className={databaseOnline ? 'pill goodPill' : 'pill warnPill'}>{storageLabel}</span>
+          <span className={storageReady ? 'pill goodPill' : 'pill warnPill'}>{storageLabel}</span>
           <details className="techDetails">
             <summary>Technik</summary>
             <p>API: {apiDisplay}</p>
             <p>Bot: {simpleStatus(bot.status)}</p>
+            {systemStatus.local_persistence?.path && <p>Speicher: {systemStatus.local_persistence.path}</p>}
           </details>
         </div>
       </header>

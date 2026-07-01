@@ -5,9 +5,9 @@ from pydantic import BaseModel
 
 from app.repositories.trading_repository import trading_repository
 from app.services.market_data_service import get_market_data_service
+from app.services.local_persistence_service import local_persistence_service
 
 router = APIRouter()
-watchlist: list[dict] = []
 
 
 class WatchlistItem(BaseModel):
@@ -19,7 +19,7 @@ class WatchlistItem(BaseModel):
 
 @router.get('')
 def list_watchlist(enrich: bool = True):
-    items = trading_repository.list_watchlist() if trading_repository.available else watchlist
+    items = trading_repository.list_watchlist() if trading_repository.available else local_persistence_service.list_watchlist()
     if enrich:
         market = get_market_data_service()
         enriched = []
@@ -32,7 +32,7 @@ def list_watchlist(enrich: bool = True):
                 quote = {'error': str(exc)}
             enriched.append({**item, 'quote': quote})
         items = enriched
-    return {'items': items, 'persistence': 'postgres' if trading_repository.available else 'memory'}
+    return {'items': items, 'persistence': 'postgres' if trading_repository.available else 'local_file'}
 
 
 @router.post('')
@@ -47,14 +47,13 @@ def add_watchlist_item(item: WatchlistItem):
         )
         return {'status': 'added', 'item': stored, 'persistence': 'postgres'}
 
-    existing = next((x for x in watchlist if x.get('symbol') == symbol), None)
-    if existing:
-        existing.update({'note': item.note, 'alert_price': item.alert_price, 'target_price': item.target_price})
-        return {'status': 'updated', 'item': existing, 'persistence': 'memory'}
-
-    payload = {'id': symbol, 'symbol': symbol, 'note': item.note, 'alert_price': item.alert_price, 'target_price': item.target_price}
-    watchlist.append(payload)
-    return {'status': 'added', 'item': payload, 'persistence': 'memory'}
+    stored = local_persistence_service.add_watchlist_item(
+        symbol=symbol,
+        note=item.note,
+        alert_price=item.alert_price,
+        target_price=item.target_price,
+    )
+    return {'status': 'added', 'item': stored, 'persistence': 'local_file'}
 
 
 @router.patch('/{symbol:path}')
@@ -69,11 +68,13 @@ def update_watchlist_item(symbol: str, item: WatchlistItem):
         )
         return {'status': 'updated' if updated else 'not_found', 'item': updated, 'persistence': 'postgres'}
 
-    existing = next((x for x in watchlist if x.get('symbol') == normalized), None)
-    if not existing:
-        return {'status': 'not_found', 'symbol': normalized, 'persistence': 'memory'}
-    existing.update({'note': item.note, 'alert_price': item.alert_price, 'target_price': item.target_price})
-    return {'status': 'updated', 'item': existing, 'persistence': 'memory'}
+    updated = local_persistence_service.update_watchlist_item(
+        normalized,
+        note=item.note,
+        alert_price=item.alert_price,
+        target_price=item.target_price,
+    )
+    return {'status': 'updated' if updated else 'not_found', 'item': updated, 'persistence': 'local_file'}
 
 
 @router.delete('/{symbol:path}')
@@ -83,6 +84,5 @@ def delete_watchlist_item(symbol: str):
         deleted = trading_repository.delete_watchlist_item(normalized)
         return {'status': 'deleted' if deleted else 'not_found', 'symbol': normalized, 'persistence': 'postgres'}
 
-    before = len(watchlist)
-    watchlist[:] = [item for item in watchlist if item.get('symbol') != normalized]
-    return {'status': 'deleted' if len(watchlist) < before else 'not_found', 'symbol': normalized, 'persistence': 'memory'}
+    deleted = local_persistence_service.delete_watchlist_item(normalized)
+    return {'status': 'deleted' if deleted else 'not_found', 'symbol': normalized, 'persistence': 'local_file'}

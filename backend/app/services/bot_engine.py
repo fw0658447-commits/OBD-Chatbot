@@ -10,6 +10,7 @@ from app.services.bot_runtime_service import bot_runtime_service
 from app.services.data_quality_service import data_quality_service
 from app.services.indicator_service import IndicatorService
 from app.services.journal_service import journal_service
+from app.services.local_persistence_service import local_persistence_service
 from app.services.market_data_service import get_market_data_service
 from app.services.ml_training_service import MLTrainingService
 from app.services.paper_trading_engine import PaperTradingEngine
@@ -398,10 +399,42 @@ class BotEngine:
 
     def evaluate_open_orders(self) -> dict:
         if not self.repository.available:
+            evaluated: list[dict] = []
+            open_orders = local_persistence_service.list_orders(status='open', limit=500)
+            for order in open_orders:
+                quote = self.market_data_service.get_quote(order['symbol'])
+                current_price = float(quote['price'])
+                updated = self.paper_trading_engine.evaluate_open_order(order=order, current_price=current_price)
+                if updated.get('status') != order.get('status'):
+                    stored = local_persistence_service.close_order(order_id=order['id'], closed_order=updated)
+                    evaluated.append({
+                        'symbol': order['symbol'],
+                        'order_id': order['id'],
+                        'current_price': current_price,
+                        'status': updated['status'],
+                        'pnl_amount': updated.get('pnl_amount'),
+                        'pnl_percent': updated.get('pnl_percent'),
+                        'stored': stored,
+                    })
+                else:
+                    mark = self.paper_trading_engine.mark_to_market(order=order, current_price=current_price)
+                    evaluated.append({
+                        'symbol': order['symbol'],
+                        'order_id': order['id'],
+                        'current_price': current_price,
+                        'status': 'still_open',
+                        'unrealized_pnl_amount': mark.get('unrealized_pnl_amount'),
+                        'unrealized_pnl_percent': mark.get('unrealized_pnl_percent'),
+                    })
+
+            snapshot = self.portfolio_snapshot()
             return {
-                'status': 'persistence_unavailable',
-                'message': 'Open-order evaluation requires PostgreSQL persistence.',
-                'evaluated': [],
+                'status': 'evaluated',
+                'count': len(evaluated),
+                'evaluated': evaluated,
+                'portfolio': snapshot.get('portfolio'),
+                'performance': snapshot.get('performance'),
+                'persistence': 'local_file',
             }
 
         evaluated: list[dict] = []
@@ -450,9 +483,22 @@ class BotEngine:
 
     def close_order(self, order_id: str, exit_price: float | None = None, reason: str = 'closed_manual') -> dict:
         if not self.repository.available:
+            order = local_persistence_service.get_order(order_id=order_id)
+            if order is None:
+                return {'status': 'not_found', 'order_id': order_id, 'persistence': 'local_file'}
+            if order.get('status') != 'open':
+                return {'status': 'not_open', 'order': order, 'persistence': 'local_file'}
+            if exit_price is None:
+                quote = self.market_data_service.get_quote(order['symbol'])
+                exit_price = float(quote['price'])
+            updated = self.paper_trading_engine.close_order(order=order, exit_price=exit_price, status=reason)
+            stored = local_persistence_service.close_order(order_id=order_id, closed_order=updated)
             return {
-                'status': 'persistence_unavailable',
-                'message': 'Manual close requires PostgreSQL persistence.',
+                'status': 'closed',
+                'order_id': order_id,
+                'closed_order': stored,
+                'portfolio_snapshot': self.portfolio_snapshot(),
+                'persistence': 'local_file',
             }
         order = self.repository.get_paper_order(order_id=order_id)
         if order is None:
@@ -478,12 +524,10 @@ class BotEngine:
 
     def portfolio_snapshot(self) -> dict:
         if not self.repository.available:
-            return {
-                'status': 'persistence_unavailable',
-                'portfolio': None,
-                'positions': [],
-                'performance': self.repository.performance_summary(),
-            }
+            return local_persistence_service.portfolio_snapshot(
+                market_data_service=self.market_data_service,
+                paper_trading_engine=self.paper_trading_engine,
+            )
 
         positions: list[dict] = []
         total_unrealized = 0.0

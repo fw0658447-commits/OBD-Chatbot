@@ -7,6 +7,7 @@ from app.services.bot_engine import BotEngine
 from app.services.bot_runtime_service import bot_runtime_service
 from app.services.bot_scheduler_service import bot_scheduler_service
 from app.services.journal_service import journal_service
+from app.services.local_persistence_service import local_persistence_service
 from app.services.validation_monitoring_service import validation_monitoring_service
 
 router = APIRouter()
@@ -50,6 +51,7 @@ def get_persistence_status():
     return {
         'database_configured': trading_repository.enabled,
         'database_reachable': trading_repository.available if trading_repository.enabled else False,
+        'local_file': local_persistence_service.status(),
     }
 
 
@@ -132,7 +134,7 @@ def get_bot_journal():
             'risk_events': trading_repository.list_risk_events(limit=25),
         }
     else:
-        persisted = {'predictions': [], 'signals': [], 'orders': [], 'risk_events': []}
+        persisted = {'predictions': [], 'signals': [], 'orders': local_persistence_service.list_orders(limit=25), 'risk_events': []}
     return {
         'in_memory_events': journal_service.list_events(),
         'persisted': persisted,
@@ -149,7 +151,7 @@ def get_bot_signals(limit: int = Query(default=50, ge=1, le=200)):
 @router.get('/orders')
 def get_paper_orders(status: str | None = None, limit: int = Query(default=100, ge=1, le=500)):
     if not trading_repository.available:
-        return {'items': [], 'persistence': 'memory'}
+        return {'items': local_persistence_service.list_orders(status=status, limit=limit), 'persistence': 'local_file'}
     return {'items': trading_repository.list_paper_orders(status=status, limit=limit), 'persistence': 'postgres'}
 
 
@@ -188,12 +190,7 @@ def get_portfolio_snapshot():
 @router.get('/performance')
 def get_performance():
     if not trading_repository.available:
-        return {
-            'persistence': 'memory',
-            'total_orders': 0,
-            'closed_orders': 0,
-            'open_orders': 0,
-        }
+        return local_persistence_service.performance_summary()
     return trading_repository.performance_summary()
 
 
@@ -228,7 +225,7 @@ def get_decision_audits(limit: int = Query(default=100, ge=1, le=500)):
 
 @router.get('/equity-curve')
 def get_equity_curve():
-    return trading_repository.equity_curve_from_orders() if trading_repository.available else {'items': [], 'persistence': 'memory'}
+    return trading_repository.equity_curve_from_orders() if trading_repository.available else local_persistence_service.equity_curve()
 
 
 @router.post('/kill-switch')

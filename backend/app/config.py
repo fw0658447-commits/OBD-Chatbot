@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     internet_analysis_provider: str = 'auto'
     bot_mode: str = 'paper'
     model_storage_path: str = '/tmp/trading-cockpit-models'
+    local_state_path: str = '.local/trading-state.json'
 
     max_risk_per_trade: float = 0.01
     max_daily_loss: float = 0.02

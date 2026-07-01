@@ -8,6 +8,7 @@ from app.services.market_cache_service import market_cache_service
 from app.services.validation_monitoring_service import validation_monitoring_service
 from app.services.identifier_service import identifier_service
 from app.services.internet_analysis_service import internet_analysis_service
+from app.services.local_persistence_service import local_persistence_service
 
 router = APIRouter()
 
@@ -50,6 +51,7 @@ def system_status():
     has_api_key = bool(settings.market_data_api_key)
     cache_status = market_cache_service.status()
     database_reachable = trading_repository.available if trading_repository.enabled else False
+    local_persistence = local_persistence_service.status()
     market_check = {
         'status': 'unknown',
         'symbol': 'BTC/USD',
@@ -80,6 +82,7 @@ def system_status():
         'status': 'online' if market_check['status'] == 'online' else 'degraded',
         'backend': 'online',
         'database': 'online' if database_reachable else 'offline',
+        'local_persistence': local_persistence,
         'cache': cache_status,
         'market_data': market_check,
         'market_data_provider': provider,
@@ -100,7 +103,12 @@ def full_diagnostics(symbol: str = Query('BTC/USD'), timeframe: str = Query('1h'
     checks: list[dict] = []
 
     db_ok = trading_repository.available if trading_repository.enabled else False
-    checks.append({'name': 'Datenbank', 'ok': db_ok, 'message': 'PostgreSQL erreichbar' if db_ok else 'PostgreSQL nicht erreichbar oder nicht konfiguriert'})
+    local_persistence = local_persistence_service.status()
+    checks.append({
+        'name': 'Speicherung',
+        'ok': db_ok or bool(local_persistence.get('enabled')),
+        'message': 'PostgreSQL erreichbar' if db_ok else f"Lokale Dateiablage aktiv: {local_persistence.get('path')}",
+    })
 
     try:
         from app.services.market_data_service import get_market_data_service
@@ -130,7 +138,7 @@ def full_diagnostics(symbol: str = Query('BTC/USD'), timeframe: str = Query('1h'
         checks.append({'name': 'Internet-Analyse', 'ok': False, 'message': str(exc)})
 
     try:
-        ledger = trading_repository.list_cash_transactions(limit=1) if trading_repository.available else []
+        ledger = trading_repository.list_cash_transactions(limit=1) if trading_repository.available else local_persistence_service.list_cash_transactions(limit=1)
         checks.append({'name': 'Paper-Konto', 'ok': True, 'message': f'Cash-Ledger erreichbar, letzte Eintraege: {len(ledger)}'})
     except Exception as exc:
         checks.append({'name': 'Paper-Konto', 'ok': False, 'message': str(exc)})

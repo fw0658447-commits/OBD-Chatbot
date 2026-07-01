@@ -8,3 +8,4 @@ node_modules/
 *.zip
 *.tsbuildinfo
 .pnpm-store/
+.local/
