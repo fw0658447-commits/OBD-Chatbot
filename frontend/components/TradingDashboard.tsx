@@ -352,6 +352,54 @@ export function TradingDashboard() {
     setLoading(false);
   }
 
+  const hasAnalysis = (analysis.candles?.length ?? 0) > 0 || Boolean(recommendation);
+  const hasPaperActivity = Number(portfolio.open_orders_count ?? 0) > 0 || orders.length > 0;
+  const guidedSteps = [
+    {
+      key: 'system',
+      done: backendOnline && marketOnline && storageReady,
+      title: 'System bereit',
+      detail: storageReady ? 'API, Marktdaten und Speicherung sind geprüft.' : 'Prüfe, ob Daten und Speicherung bereit sind.',
+      actionLabel: 'System prüfen',
+      action: runFullDiagnostics,
+      disabled: loading
+    },
+    {
+      key: 'analysis',
+      done: hasAnalysis,
+      title: 'Asset analysieren',
+      detail: `${symbol} mit Kurs, Signal und Empfehlung ansehen.`,
+      actionLabel: 'Analyse öffnen',
+      action: () => {
+        setView('analyse');
+        loadAnalysis(symbol, timeframe);
+      },
+      disabled: loading
+    },
+    {
+      key: 'watchlist',
+      done: watchlist.length > 0,
+      title: 'Watchlist anlegen',
+      detail: watchlist.length > 0 ? `${watchlist.length} Asset${watchlist.length === 1 ? '' : 's'} gespeichert.` : 'Ein beobachtetes Asset speichern.',
+      actionLabel: watchlist.length > 0 ? 'Watchlist öffnen' : 'Asset merken',
+      action: () => {
+        if (watchlist.length > 0) setView('watchlist');
+        else addToWatchlist(symbol);
+      },
+      disabled: loading
+    },
+    {
+      key: 'paper',
+      done: hasPaperActivity,
+      title: 'Paper-Trade testen',
+      detail: hasPaperActivity ? 'Es gibt bereits simulierte Trade-Aktivität.' : 'Optional einen simulierten Trade ohne echtes Geld öffnen.',
+      actionLabel: 'Paper-Konto öffnen',
+      action: () => setView('portfolio'),
+      disabled: false
+    }
+  ];
+  const completedGuidedSteps = guidedSteps.filter((step) => step.done).length;
+
   return (
     <main className="appShell">
       <header className="topBar">
@@ -409,20 +457,31 @@ export function TradingDashboard() {
 
       {view === 'dashboard' && (
         <div className="stack">
-          <section className="focusPanel">
-            <div>
-              <p className="eyebrow">Nächste Aktion</p>
-              <h2>{marketOnline ? 'Markt ansehen und Paper-Trade testen' : 'Verbindung prüfen'}</h2>
-              <p className="muted">
-                {marketOnline
-                  ? 'Die App ist im sicheren Paper-Modus. Starte mit einer Analyse und öffne nur simulierte Trades.'
-                  : 'Marktdaten sind noch nicht erreichbar. Prüfe zuerst das System.'}
-              </p>
+          <section className="guidedStart" aria-label="Erste Schritte">
+            <div className="guidedHeader">
+              <div>
+                <p className="eyebrow">Geführter Start</p>
+                <h2>{marketOnline ? 'In vier Schritten zum sicheren Paper-Test' : 'Erst Verbindung prüfen'}</h2>
+                <p className="muted">
+                  {marketOnline
+                    ? 'Alles bleibt im Paper-Modus. Folge den Schritten von links nach rechts oder springe direkt zur passenden Aktion.'
+                    : 'Marktdaten sind noch nicht erreichbar. Beginne mit dem Systemcheck.'}
+                </p>
+              </div>
+              <span className="progressPill">{completedGuidedSteps} von {guidedSteps.length} erledigt</span>
             </div>
-            <div className="actionStrip">
-              <button className="primary" onClick={() => setView('analyse')}>Analyse öffnen</button>
-              <button onClick={() => setView('watchlist')}>Watchlist</button>
-              <button onClick={runFullDiagnostics} disabled={loading}>System prüfen</button>
+            <div className="stepGrid">
+              {guidedSteps.map((step, index) => (
+                <article key={step.key} className={`stepCard ${step.done ? 'complete' : ''}`}>
+                  <div className="stepTop">
+                    <span className="stepMarker">{step.done ? 'OK' : index + 1}</span>
+                    <span className={step.done ? 'stepState good' : 'stepState'}>{step.done ? 'Erledigt' : 'Offen'}</span>
+                  </div>
+                  <h3>{step.title}</h3>
+                  <p className="muted">{step.detail}</p>
+                  <button className={index === 0 || index === 1 ? 'primary stepAction' : 'stepAction'} onClick={step.action} disabled={step.disabled}>{step.actionLabel}</button>
+                </article>
+              ))}
             </div>
           </section>
 

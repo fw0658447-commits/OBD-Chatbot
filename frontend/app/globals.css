@@ -89,6 +89,76 @@ th { color: var(--muted); font-size: 13px; }
   background: var(--card);
 }
 .focusPanel h2 { margin: 0 0 8px; font-size: 24px; letter-spacing: 0; }
+.guidedStart {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--card);
+}
+.guidedHeader {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.guidedHeader h2 { margin: 0 0 8px; font-size: 24px; letter-spacing: 0; }
+.progressPill {
+  flex: 0 0 auto;
+  border: 1px solid #fedf89;
+  border-radius: 999px;
+  padding: 8px 11px;
+  color: var(--warning);
+  background: var(--soft-warning);
+  font-size: 13px;
+  font-weight: 700;
+}
+.stepGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+.stepCard {
+  display: flex;
+  min-height: 210px;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fafafa;
+}
+.stepCard.complete {
+  border-color: #abefc6;
+  background: var(--soft-success);
+}
+.stepTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.stepMarker {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--accent);
+  background: var(--card);
+  font-size: 12px;
+  font-weight: 800;
+}
+.stepState {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.stepCard h3 { margin: 0; font-size: 18px; letter-spacing: 0; }
+.stepCard p { margin: 0; }
+.stepAction { width: 100%; margin-top: auto; }
 .miniGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 1fr));
@@ -115,6 +185,9 @@ textarea {
 @media (max-width: 760px) {
   .appShell { padding: 18px; }
   .topBar, .focusPanel { grid-template-columns: 1fr; }
+  .guidedHeader { flex-direction: column; }
+  .stepGrid { grid-template-columns: 1fr; }
+  .progressPill { align-self: flex-start; }
   .statusPills { justify-content: flex-start; }
   .topBar h1 { font-size: 28px; }
 }
