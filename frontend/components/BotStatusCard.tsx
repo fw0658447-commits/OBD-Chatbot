@@ -12,20 +12,45 @@ type BotStatus = {
   default_decision_mode?: string;
 };
 
+function statusLabel(status: string) {
+  if (status === 'paper_only') return 'Bereit für Paper-Trading';
+  if (status === 'backend_not_reachable') return 'API nicht erreichbar';
+  return status.replaceAll('_', ' ');
+}
+
+function modeLabel(mode: string) {
+  if (mode === 'paper') return 'Paper-Trading';
+  return mode.replaceAll('_', ' ');
+}
+
 export function BotStatusCard({ bot }: { bot: BotStatus }) {
+  const safeMode = !bot.live_trading_enabled && bot.mode === 'paper';
+
   return (
-    <section style={{ border: '1px solid #ddd', borderRadius: 12, padding: 20, maxWidth: 560 }}>
+    <section className="card">
       <h2>Bot Status</h2>
-      <p><strong>Status:</strong> {bot.status}</p>
-      <p><strong>Modus:</strong> {bot.mode}</p>
-      <p><strong>Live-Trading:</strong> {bot.live_trading_enabled ? 'aktiv' : 'gesperrt'}</p>
-      <p><strong>Max. Risiko pro Trade:</strong> {(bot.max_risk_per_trade * 100).toFixed(2)}%</p>
-      <p><strong>Max. Tagesverlust:</strong> {(bot.max_daily_loss * 100).toFixed(2)}%</p>
-      <p><strong>Max. offene Trades:</strong> {bot.max_open_trades}</p>
-      <p><strong>Mindest-CRV:</strong> {bot.min_crv}</p>
-      <p><strong>Mindest-Confidence:</strong> {bot.min_confidence_score}/100</p>
-      <p><strong>Max. Risk Score:</strong> {bot.max_risk_score}/100</p>
-      <p><strong>Decision Modes:</strong> {(bot.supported_decision_modes ?? ['rule']).join(', ')}</p>
+      <div className={safeMode ? 'kpi good' : 'kpi bad'}>{safeMode ? 'Sicher' : 'Prüfen'}</div>
+      <p><strong>Status:</strong> {statusLabel(bot.status)}</p>
+      <p><strong>Modus:</strong> {modeLabel(bot.mode)}</p>
+      <p><strong>Echtes Trading:</strong> {bot.live_trading_enabled ? 'aktiv' : 'gesperrt'}</p>
+      <div className="miniGrid">
+        <div>
+          <span className="muted">Risiko je Trade</span>
+          <strong>{(bot.max_risk_per_trade * 100).toFixed(2)}%</strong>
+        </div>
+        <div>
+          <span className="muted">Tagesverlust</span>
+          <strong>{(bot.max_daily_loss * 100).toFixed(2)}%</strong>
+        </div>
+        <div>
+          <span className="muted">Offene Trades</span>
+          <strong>{bot.max_open_trades}</strong>
+        </div>
+        <div>
+          <span className="muted">Mindestqualität</span>
+          <strong>{bot.min_confidence_score}/100</strong>
+        </div>
+      </div>
     </section>
   );
 }

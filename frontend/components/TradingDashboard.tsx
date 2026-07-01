@@ -37,6 +37,18 @@ type WatchlistItem = {
   quote?: Quote | null;
 };
 
+const VIEW_LABELS: Record<View, string> = {
+  dashboard: 'Start',
+  analyse: 'Analyse',
+  watchlist: 'Watchlist',
+  portfolio: 'Konto',
+  intelligence: 'Recherche',
+  bot: 'Bot',
+  monitoring: 'Risiko',
+  backtest: 'Tests',
+  ml: 'Modelle'
+};
+
 const EMPTY_BOT: BotStatus = {
   status: 'backend_not_reachable',
   mode: 'paper',
@@ -79,6 +91,14 @@ function percent(value: unknown) {
 
 function number(value: unknown, digits = 2) {
   return Number(value ?? 0).toFixed(digits);
+}
+
+function simpleStatus(value: unknown) {
+  if (value === 'online') return 'online';
+  if (value === 'offline') return 'nicht verbunden';
+  if (value === 'paper_only') return 'Paper-Trading';
+  if (value === 'backend_not_reachable') return 'nicht erreichbar';
+  return String(value ?? '-').replaceAll('_', ' ');
 }
 
 export function TradingDashboard() {
@@ -131,6 +151,11 @@ export function TradingDashboard() {
   const [diagnostics, setDiagnostics] = useState<any>({});
 
   const botCanTrade = useMemo(() => !bot.live_trading_enabled && bot.mode === 'paper', [bot]);
+  const safeMode = !bot.live_trading_enabled && bot.mode === 'paper';
+  const marketOnline = systemStatus.market_data?.status === 'online';
+  const backendOnline = systemStatus.backend === 'online';
+  const databaseOnline = systemStatus.database === 'online';
+  const storageLabel = databaseOnline ? 'Daten werden gespeichert' : 'Nur dieser Testlauf';
 
   async function refreshCore() {
     const [botStatus, overviewData, watchlistData, snapshotData, signalsData, ordersData, riskData, strategyData, modelHealthData, modePerfData, configData, schedulerData, schedulerRunsData, auditData, equityData, statusData, ledgerData] = await Promise.all([
@@ -326,26 +351,39 @@ export function TradingDashboard() {
   }
 
   return (
-    <main>
-      <div className="row" style={{ justifyContent: 'space-between' }}>
+    <main className="appShell">
+      <header className="topBar">
         <div>
-          <h1>Trading Cockpit MVP v1.5</h1>
-          <p className="muted">Full-Fix-Version mit Codespaces-Proxy, Paper-Konto-Reparatur, Free-Online-Marktdaten, ISIN/WKN/Ticker-Lookup und klarer Long/Short/No-Trade-Empfehlung. Live-Trading bleibt gesperrt.</p>
+          <p className="eyebrow">Paper-Trading</p>
+          <h1>Trading Cockpit</h1>
+          <p className="muted">Analyse, Watchlist und Bot-Test ohne echtes Geld.</p>
         </div>
-        <div className="code muted">API: {apiDisplay}</div>
-      </div>
+        <div className="statusPills" aria-label="Systemstatus">
+          <span className={safeMode ? 'pill goodPill' : 'pill badPill'}>{safeMode ? 'Sicherer Modus' : 'Bitte prüfen'}</span>
+          <span className={backendOnline ? 'pill goodPill' : 'pill badPill'}>API {backendOnline ? 'online' : 'offline'}</span>
+          <span className={marketOnline ? 'pill goodPill' : 'pill badPill'}>Marktdaten {marketOnline ? 'online' : 'offline'}</span>
+          <span className={databaseOnline ? 'pill goodPill' : 'pill warnPill'}>{storageLabel}</span>
+          <details className="techDetails">
+            <summary>Technik</summary>
+            <p>API: {apiDisplay}</p>
+            <p>Bot: {simpleStatus(bot.status)}</p>
+          </details>
+        </div>
+      </header>
 
       <nav className="tabs">
         {(['dashboard', 'analyse', 'watchlist', 'portfolio', 'intelligence', 'bot', 'monitoring', 'backtest', 'ml'] as View[]).map((item) => (
           <button key={item} onClick={() => setView(item)} className={`tab ${view === item ? 'active' : ''}`}>
-            {item === 'dashboard' ? 'Dashboard' : item === 'analyse' ? 'Analyse' : item === 'watchlist' ? 'Watchlist' : item === 'portfolio' ? 'Paper-Konto' : item === 'intelligence' ? 'Research & Empfehlung' : item === 'bot' ? 'Bot Center' : item === 'monitoring' ? 'Monitoring' : item === 'backtest' ? 'Backtesting' : 'ML-Modell'}
+            {VIEW_LABELS[item]}
           </button>
         ))}
       </nav>
 
-      <div className="row" style={{ marginBottom: 16 }}>
-        <button onClick={runFullDiagnostics} disabled={loading}>Full System Check</button>
-        <span className="muted">v1.5: Frontend-Proxy, Online-Free-Provider, Paper-Konto-Fix</span>
+      <div className="quickActions">
+        <button className="primary" onClick={() => setView('analyse')}>Analyse starten</button>
+        <button onClick={() => setView('portfolio')}>Paper-Konto öffnen</button>
+        <button onClick={runFullDiagnostics} disabled={loading}>System prüfen</button>
+        <span className="muted">{loading ? 'Lädt...' : 'Bereit'}</span>
       </div>
 
       {message && <section className="card" style={{ marginBottom: 16 }}>{message}{(message.includes('error') || message.includes('Fehler')) && <p className="muted">Details siehe API/Diagnose oder Backend-Logs.</p>}</section>}
@@ -368,9 +406,26 @@ export function TradingDashboard() {
 
       {view === 'dashboard' && (
         <div className="stack">
+          <section className="focusPanel">
+            <div>
+              <p className="eyebrow">Nächste Aktion</p>
+              <h2>{marketOnline ? 'Markt ansehen und Paper-Trade testen' : 'Verbindung prüfen'}</h2>
+              <p className="muted">
+                {marketOnline
+                  ? 'Die App ist im sicheren Paper-Modus. Starte mit einer Analyse und öffne nur simulierte Trades.'
+                  : 'Marktdaten sind noch nicht erreichbar. Prüfe zuerst das System.'}
+              </p>
+            </div>
+            <div className="actionStrip">
+              <button className="primary" onClick={() => setView('analyse')}>Analyse öffnen</button>
+              <button onClick={() => setView('watchlist')}>Watchlist</button>
+              <button onClick={runFullDiagnostics} disabled={loading}>System prüfen</button>
+            </div>
+          </section>
+
           <div className="grid">
             <section className="card">
-              <h2>Paper Portfolio</h2>
+              <h2>Paper-Konto</h2>
               <div className="kpi">{number(portfolio.current_equity, 2)}</div>
               <p className="muted">Equity</p>
               <p>Cash: {number(portfolio.cash_balance, 2)}</p>
@@ -379,7 +434,7 @@ export function TradingDashboard() {
             </section>
 
             <section className="card">
-              <h2>Bot Performance</h2>
+              <h2>Bot-Ergebnis</h2>
               <div className="kpi">{number(performance.win_rate_percent, 1)}%</div>
               <p className="muted">Trefferquote</p>
               <p>Geschlossene Trades: {performance.closed_orders ?? 0}</p>
@@ -390,19 +445,18 @@ export function TradingDashboard() {
             <BotStatusCard bot={bot as any} />
 
             <section className="card">
-              <h2>Online-/Datenstatus</h2>
+              <h2>Verbindungen</h2>
               <div className={systemStatus.simulated_data ? 'kpi bad' : 'kpi good'}>{systemStatus.simulated_data ? 'Mock' : 'Live'}</div>
-              <p>Backend: {systemStatus.backend ?? '-'}</p>
-              <p>Datenbank: {systemStatus.database ?? '-'}</p>
-              <p>Provider: {systemStatus.market_data_provider ?? '-'}</p>
-              <p>Marktdaten: {systemStatus.market_data?.status ?? '-'}</p>
-              <p>Identifier: {systemStatus.identifier_provider?.openfigi_configured ? 'OpenFIGI API' : 'Fallback/Mock'}</p>
-              <p>News/Sentiment: {systemStatus.internet_analysis_provider?.internet_analysis_enabled ? 'API verbunden' : 'nicht verbunden'}</p>
+              <p>App-API: {simpleStatus(systemStatus.backend)}</p>
+              <p>Speicherung: {storageLabel}</p>
+              <p>Datenquelle: {systemStatus.market_data_provider ?? '-'}</p>
+              <p>Marktdaten: {simpleStatus(systemStatus.market_data?.status)}</p>
+              <p>Recherche: {systemStatus.internet_analysis_provider?.internet_analysis_enabled ? 'verbunden' : 'nicht verbunden'}</p>
               <p className="muted">{systemStatus.recommended_action ?? ''}</p>
             </section>
 
             <section className="card">
-              <h2>Dashboard-Kurzlage</h2>
+              <h2>Heute</h2>
               <p>Watchlist: {watchlist.length}</p>
               <p>Offene Trades: {portfolio.open_orders_count ?? performance.open_orders ?? 0}</p>
               <p>Gebundenes Kapital: {number(portfolio.open_notional, 2)}</p>
