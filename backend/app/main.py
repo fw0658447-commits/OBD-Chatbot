@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.routes import backtest_routes, bot_routes, data_routes, export_routes, intelligence_routes, market_routes, ml_routes, monitoring_routes, ops_routes, prediction_routes, portfolio_routes, watchlist_routes
+from app.routes import backtest_routes, bot_routes, data_routes, export_routes, intelligence_routes, market_routes, ml_routes, model_automation_routes, monitoring_routes, ops_routes, prediction_routes, portfolio_routes, watchlist_routes
 from app.repositories.trading_repository import trading_repository
+from app.services.model_automation_service import model_automation_service
 
 app = FastAPI(title='Trading Cockpit API', version='1.5.0')
 
@@ -17,6 +18,7 @@ app.add_middleware(
 app.include_router(market_routes.router, prefix='/api/market', tags=['Market'])
 app.include_router(backtest_routes.router, prefix='/api/backtest', tags=['Backtest'])
 app.include_router(ml_routes.router, prefix='/api/ml', tags=['ML'])
+app.include_router(model_automation_routes.router, prefix='/api/ml/automation', tags=['ML Automation'])
 app.include_router(data_routes.router, prefix='/api/data', tags=['Data Quality'])
 app.include_router(export_routes.router, prefix='/api/export', tags=['Export'])
 app.include_router(intelligence_routes.router, prefix='/api/intelligence', tags=['Intelligence'])
@@ -26,6 +28,15 @@ app.include_router(prediction_routes.router, prefix='/api/predictions', tags=['P
 app.include_router(bot_routes.router, prefix='/api/bot', tags=['Bot'])
 app.include_router(portfolio_routes.router, prefix='/api/portfolio', tags=['Portfolio'])
 app.include_router(watchlist_routes.router, prefix='/api/watchlist', tags=['Watchlist'])
+
+
+@app.on_event('startup')
+def start_model_automation_if_enabled() -> None:
+    try:
+        if model_automation_service.get_config().get('enabled'):
+            model_automation_service.start()
+    except Exception:
+        pass
 
 
 @app.get('/health')
