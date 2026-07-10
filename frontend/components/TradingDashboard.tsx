@@ -36,6 +36,13 @@ type WatchlistItem = {
   quote?: Quote | null;
 };
 
+type AccountConfirmation = {
+  title: string;
+  detail: string;
+  meta: string;
+  tone: 'good' | 'bad' | 'neutral';
+} | null;
+
 const DEFAULT_ACCOUNT_ASSET_GROUPS = [
   {
     label: 'Krypto',
@@ -139,6 +146,20 @@ function errorDetail(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
+function apiErrorDetail(result: any) {
+  return result?.error ? String(result.detail ?? 'Aktion wurde blockiert.') : '';
+}
+
+function apiFailureDetail(result: any, successStatuses: string[]) {
+  const transportError = apiErrorDetail(result);
+  if (transportError) return transportError;
+  const status = String(result?.status ?? 'unbekannt');
+  if (successStatuses.includes(status)) return '';
+  if (status === 'not_found') return 'Position wurde nicht gefunden.';
+  if (status === 'not_open') return 'Position ist nicht mehr offen.';
+  return String(result?.detail ?? result?.reason ?? `Unerwarteter Status: ${status}`);
+}
+
 function simpleStatus(value: unknown) {
   if (value === 'online') return 'online';
   if (value === 'offline') return 'nicht verbunden';
@@ -180,6 +201,7 @@ export function TradingDashboard() {
   const [depositAmount, setDepositAmount] = useState('10000');
   const [withdrawAmount, setWithdrawAmount] = useState('1000');
   const [resetBalance, setResetBalance] = useState('10000');
+  const [accountConfirmation, setAccountConfirmation] = useState<AccountConfirmation>(null);
   const [manualNotional, setManualNotional] = useState('1000');
   const [manualSide, setManualSide] = useState<'long' | 'short'>('long');
   const [manualStop, setManualStop] = useState('');
@@ -411,7 +433,25 @@ export function TradingDashboard() {
           ? { amount, note: 'Manuelle Auszahlung' }
           : { balance: amount, note: 'Paper-Konto Reset', cancel_open_orders: true };
       const result = await apiPost(path, body, { status: 'error' });
+      const expectedStatus = kind === 'deposit' ? 'deposited' : kind === 'withdraw' ? 'withdrawn' : 'reset';
+      const failureReason = apiFailureDetail(result, [expectedStatus]);
+      if (failureReason) {
+        setMessage(`Paper-Konto konnte nicht aktualisiert werden: ${failureReason}`);
+        setAccountConfirmation({
+          title: 'Kontobuchung fehlgeschlagen',
+          detail: failureReason,
+          meta: 'Keine Änderung gebucht',
+          tone: 'bad'
+        });
+        return;
+      }
       setMessage(`Paper-Konto: ${(result as any).status ?? 'ok'}${(result as any).detail ? ' - ' + (result as any).detail : ''}`);
+      setAccountConfirmation({
+        title: kind === 'deposit' ? 'Einzahlung gebucht' : kind === 'withdraw' ? 'Auszahlung gebucht' : 'Paper-Konto zurückgesetzt',
+        detail: `${number(amount, 2)} · ${kind === 'reset' ? 'Offene Orders storniert' : 'Virtuelles Guthaben aktualisiert'}`,
+        meta: shortTime(new Date().toISOString()),
+        tone: kind === 'withdraw' ? 'neutral' : 'good'
+      });
       await refreshCore();
     });
   }
@@ -456,19 +496,71 @@ export function TradingDashboard() {
         take_profit: takeProfit,
         note: actionLabel === 'buy' ? 'Manueller Kauf aus Konto' : side === 'long' ? 'Manueller Long-Trade aus Konto' : 'Manueller Short-Trade aus Konto'
       }, { status: 'error' });
+      const blockedReason = apiFailureDetail(result, ['manual_order_opened']);
+      if (blockedReason) {
+        setMessage(`Trade blockiert: ${blockedReason}`);
+        setAccountConfirmation({
+          title: 'Trade blockiert',
+          detail: `${cleanSymbol} · ${blockedReason}`,
+          meta: 'Schutzregel',
+          tone: 'bad'
+        });
+        return;
+      }
       setManualSide(side);
       setMessage(`${actionText}: ${(result as any).status ?? 'unbekannt'}${(result as any).detail ? ' - ' + (result as any).detail : ''}`);
+      setAccountConfirmation({
+        title: `${actionText} eröffnet`,
+        detail: `${cleanSymbol} · Positionswert ${number(notional, 2)}`,
+        meta: `Status ${(result as any).status ?? 'ok'}`,
+        tone: 'good'
+      });
       await Promise.all([refreshCore(), loadAnalysis(cleanSymbol, timeframe, strategyName, false)]);
     });
   }
 
   async function closePaperOrder(orderId: string) {
     if (!orderId) return;
+    const originalOrder = (portfolio.positions ?? []).find((item: any) => String(item.id) === orderId) ?? {};
+    const originalSide = originalOrder.side === 'short' ? 'short' : 'long';
+    const originalSymbol = originalOrder.symbol ?? 'Position';
+    const referencePrice = Number(originalOrder.current_price ?? originalOrder.entry_price ?? 0);
+    const positionValue = Math.abs(Number(originalOrder.quantity ?? 0) * referencePrice);
+    if (typeof window !== 'undefined') {
+      const actionText = originalSide === 'short' ? 'Short schließen' : 'Position verkaufen';
+      const confirmed = window.confirm(`${actionText}?\nAsset: ${originalSymbol}\nWert grob: ${number(positionValue, 2)}`);
+      if (!confirmed) {
+        setMessage(`${actionText} abgebrochen.`);
+        return;
+      }
+    }
     await runBusy('Position wird geschlossen', async () => {
       const result = await apiPost(`/api/bot/close-order/${q(orderId)}`, {
         reason: 'closed_manual'
       }, { status: 'error' });
+      const blockedReason = apiFailureDetail(result, ['closed']);
+      if (blockedReason) {
+        setMessage(`Position konnte nicht geschlossen werden: ${blockedReason}`);
+        setAccountConfirmation({
+          title: 'Schließen fehlgeschlagen',
+          detail: blockedReason,
+          meta: 'Keine Position geschlossen',
+          tone: 'bad'
+        });
+        await refreshCore();
+        return;
+      }
       setMessage(`Position schließen: ${(result as any).status ?? 'unbekannt'}${(result as any).detail ? ' - ' + (result as any).detail : ''}`);
+      const closedOrder = (result as any).closed_order ?? {};
+      const pnl = Number(closedOrder.pnl_amount ?? 0);
+      const closedSide = closedOrder.side ?? originalOrder.side;
+      const closedSymbol = closedOrder.symbol ?? originalOrder.symbol ?? 'Asset';
+      setAccountConfirmation({
+        title: closedSide === 'short' ? 'Short geschlossen' : 'Position verkauft',
+        detail: `${closedSymbol} · Ergebnis ${number(pnl, 2)}`,
+        meta: `Status ${(result as any).status ?? 'geschlossen'}`,
+        tone: pnl >= 0 ? 'good' : 'bad'
+      });
       await refreshCore();
     });
   }
@@ -685,6 +777,18 @@ export function TradingDashboard() {
     return sum + quantity * price;
   }, 0);
   const amountAboveCash = manualNotionalValue != null && manualNotionalValue > availableCash;
+  const manualTradeBlockers = [
+    !botCanTrade ? 'Nur Paper-Modus erlaubt' : '',
+    killSwitchActive ? 'Schutzstopp aktiv' : '',
+    openTradeCount >= maxOpenTrades ? `Positionslimit ${openTradeCount}/${maxOpenTrades}` : '',
+    manualNotionalValue == null ? 'Betrag prüfen' : '',
+    amountAboveCash ? 'Zu wenig freier Cash' : ''
+  ].filter(Boolean);
+  const canOpenManualTrade = manualTradeBlockers.length === 0;
+  const manualTradeStatusTitle = canOpenManualTrade ? 'Trade bereit' : 'Trade blockiert';
+  const manualTradeStatusDetail = canOpenManualTrade
+    ? `${selectedSymbolKey || 'Asset'} kann im Paper-Konto eröffnet werden.`
+    : manualTradeBlockers.join(' · ');
   const accountActivityItems = [
     ...orders.map((item: any) => {
       const side = item.side === 'short' ? 'Short' : 'Long';
@@ -718,20 +822,42 @@ export function TradingDashboard() {
       setMessage(side === 'short' ? `Keine offene Short-Position für ${selectedSymbolKey} gefunden.` : `Keine offene Long-Position für ${selectedSymbolKey} zum Verkaufen gefunden.`);
       return;
     }
+    const closeValue = side === 'short' ? shortPositionValue : longPositionValue;
     if (typeof window !== 'undefined') {
       const actionText = side === 'short' ? 'Short-Positionen schließen' : 'Long-Positionen verkaufen';
-      const value = side === 'short' ? shortPositionValue : longPositionValue;
-      const confirmed = window.confirm(`${actionText}?\nAsset: ${selectedSymbolKey}\nPositionen: ${orderIds.length}\nWert grob: ${number(value, 2)}`);
+      const confirmed = window.confirm(`${actionText}?\nAsset: ${selectedSymbolKey}\nPositionen: ${orderIds.length}\nWert grob: ${number(closeValue, 2)}`);
       if (!confirmed) {
         setMessage(`${actionText} abgebrochen.`);
         return;
       }
     }
     await runBusy(side === 'short' ? 'Short-Positionen werden geschlossen' : 'Long-Positionen werden verkauft', async () => {
-      await Promise.all(orderIds.map((orderId: string) => apiPost(`/api/bot/close-order/${q(String(orderId))}`, {
+      const closeResults = await Promise.all(orderIds.map((orderId: string) => apiPost(`/api/bot/close-order/${q(String(orderId))}`, {
         reason: side === 'short' ? 'closed_short_from_account' : 'sold_long_from_account'
       }, { status: 'error' })));
+      const failures = closeResults
+        .map((item: any) => apiFailureDetail(item, ['closed']))
+        .filter(Boolean);
+      if (failures.length > 0) {
+        const closedCount = closeResults.length - failures.length;
+        const failureReason = failures[0];
+        setMessage(`${closedCount}/${orderIds.length} Position(en) geschlossen: ${failureReason}`);
+        setAccountConfirmation({
+          title: closedCount > 0 ? 'Teilweise geschlossen' : 'Schließen fehlgeschlagen',
+          detail: `${closedCount}/${orderIds.length} erfolgreich · ${failureReason}`,
+          meta: failures.length > 1 ? `${failures.length} Fehler` : '1 Fehler',
+          tone: 'bad'
+        });
+        await refreshCore();
+        return;
+      }
       setMessage(side === 'short' ? `${orderIds.length} Short-Position(en) geschlossen.` : `${orderIds.length} Long-Position(en) verkauft.`);
+      setAccountConfirmation({
+        title: side === 'short' ? 'Shorts geschlossen' : 'Longs verkauft',
+        detail: `${selectedSymbolKey} · ${orderIds.length} Position(en) · Wert grob ${number(closeValue, 2)}`,
+        meta: shortTime(new Date().toISOString()),
+        tone: 'good'
+      });
       await refreshCore();
     });
   }
@@ -1870,19 +1996,39 @@ export function TradingDashboard() {
               <p className="tradeHint bad">Der Betrag liegt über dem freien Paper-Cash. Reduziere den Positionswert oder buche zuerst Paper-Cash ein.</p>
             )}
 
+            <div className={`manualTradeStatus ${canOpenManualTrade ? 'ready' : 'blocked'}`}>
+              <div>
+                <span>{canOpenManualTrade ? 'Bereit' : 'Blockiert'}</span>
+                <strong>{manualTradeStatusTitle}</strong>
+                <p>{manualTradeStatusDetail}</p>
+              </div>
+              <span className={canOpenManualTrade ? 'pill goodPill' : 'pill badPill'}>{openTradeCount}/{maxOpenTrades} offen</span>
+            </div>
+
             <div className="accountTradeActions">
-              <button className="primary" onClick={() => createManualOrder('long', 'buy')} disabled={loading}>Kaufen</button>
+              <button className="primary" onClick={() => createManualOrder('long', 'buy')} disabled={loading || !canOpenManualTrade} title={manualTradeStatusDetail}>Kaufen</button>
               <button className="danger" onClick={() => closeSelectedSidePositions('long')} disabled={loading || selectedLongPositions.length === 0} title={selectedLongPositions.length === 0 ? 'Keine offene Long-Position für dieses Asset' : 'Alle Long-Positionen dieses Assets verkaufen'}>
                 Verkaufen
               </button>
-              <button onClick={() => createManualOrder('long', 'long')} disabled={loading}>Long öffnen</button>
-              <button onClick={() => createManualOrder('short', 'short')} disabled={loading}>Short öffnen</button>
+              <button onClick={() => createManualOrder('long', 'long')} disabled={loading || !canOpenManualTrade} title={manualTradeStatusDetail}>Long öffnen</button>
+              <button onClick={() => createManualOrder('short', 'short')} disabled={loading || !canOpenManualTrade} title={manualTradeStatusDetail}>Short öffnen</button>
               <button onClick={() => closeSelectedSidePositions('short')} disabled={loading || selectedShortPositions.length === 0} title={selectedShortPositions.length === 0 ? 'Keine offene Short-Position für dieses Asset' : 'Alle Short-Positionen dieses Assets schließen'}>
                 Short schließen
               </button>
               <button onClick={runSearch} disabled={loading}>Asset suchen</button>
               <button onClick={() => loadAnalysis(symbol, timeframe)} disabled={loading}>Kurs prüfen</button>
             </div>
+
+            {accountConfirmation && (
+              <div className={`accountConfirmation ${accountConfirmation.tone}`}>
+                <div>
+                  <span>{accountConfirmation.meta}</span>
+                  <strong>{accountConfirmation.title}</strong>
+                  <p>{accountConfirmation.detail}</p>
+                </div>
+                <button type="button" onClick={() => setAccountConfirmation(null)}>Ausblenden</button>
+              </div>
+            )}
 
             {searchResults.length > 0 && (
               <div className="assetChoiceList">
@@ -2010,7 +2156,7 @@ export function TradingDashboard() {
               <div className="emptyState">
                 <h3>Keine offenen Positionen</h3>
                 <p className="muted">Wähle oben ein Asset und eröffne einen simulierten Long- oder Short-Trade.</p>
-                <button className="primary" onClick={() => createManualOrder('long')} disabled={loading}>Ersten Kauf testen</button>
+                <button className="primary" onClick={() => createManualOrder('long')} disabled={loading || !canOpenManualTrade} title={manualTradeStatusDetail}>Ersten Kauf testen</button>
               </div>
             )}
           </section>

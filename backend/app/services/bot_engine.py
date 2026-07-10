@@ -493,6 +493,8 @@ class BotEngine:
                 exit_price = float(quote['price'])
             updated = self.paper_trading_engine.close_order(order=order, exit_price=exit_price, status=reason)
             stored = local_persistence_service.close_order(order_id=order_id, closed_order=updated)
+            if stored is None:
+                return {'status': 'not_open', 'order_id': order_id, 'persistence': 'local_file'}
             return {
                 'status': 'closed',
                 'order_id': order_id,
@@ -510,6 +512,8 @@ class BotEngine:
             exit_price = float(quote['price'])
         updated = self.paper_trading_engine.close_order(order=order, exit_price=exit_price, status=reason)
         stored = self.repository.close_paper_order(order_id=order_id, closed_order=updated)
+        if stored is None:
+            return {'status': 'not_open', 'order_id': order_id}
         self.repository.log_risk_event(
             event_type='paper_order_closed_manual',
             severity='info',

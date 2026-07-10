@@ -4,6 +4,7 @@ from copy import deepcopy
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+from threading import RLock
 from typing import Any
 
 from app.config import settings
@@ -34,6 +35,9 @@ def _default_state() -> dict[str, Any]:
 
 
 class LocalPersistenceService:
+    def __init__(self) -> None:
+        self._order_lock = RLock()
+
     @property
     def path(self) -> Path:
         return Path(settings.local_state_path)
@@ -126,7 +130,7 @@ class LocalPersistenceService:
         portfolio = state['portfolio']
         cash_balance = float(portfolio.get('cash_balance') or 0.0)
         if transaction_type == 'withdrawal' and cash_balance < amount:
-            raise ValueError('Withdrawal amount exceeds available cash.')
+            raise ValueError('Auszahlungsbetrag übersteigt das verfügbare Paper-Guthaben.')
 
         signed_amount = amount if transaction_type == 'deposit' else -amount
         portfolio['cash_balance'] = cash_balance + signed_amount
@@ -176,33 +180,45 @@ class LocalPersistenceService:
         self._write(state)
         return {'portfolio': self._portfolio_summary_from_state(state), 'transaction': deepcopy(tx)}
 
-    def add_manual_order(self, symbol: str, order: dict[str, Any]) -> dict[str, Any]:
-        state = self._read()
-        portfolio = state['portfolio']
-        quantity = float(order.get('quantity') or 0.0)
-        entry_price = float(order.get('entry_price') or 0.0)
-        entry_commission = float(order.get('entry_commission') or 0.0)
-        reserved_cash = abs(quantity * entry_price) + entry_commission
-        if float(portfolio.get('cash_balance') or 0.0) < reserved_cash:
-            raise ValueError('Order amount exceeds available paper cash.')
+    def add_manual_order(
+        self,
+        symbol: str,
+        order: dict[str, Any],
+        max_open_trades: int | None = None,
+    ) -> dict[str, Any]:
+        with self._order_lock:
+            state = self._read()
+            portfolio = state['portfolio']
+            open_orders = [item for item in state['manual_orders'] if item.get('status') == 'open']
+            if max_open_trades is not None and len(open_orders) >= max_open_trades:
+                raise ValueError(f'Positionslimit erreicht: {len(open_orders)}/{max_open_trades} offene Trades.')
+            quantity = float(order.get('quantity') or 0.0)
+            entry_price = float(order.get('entry_price') or 0.0)
+            entry_commission = float(order.get('entry_commission') or 0.0)
+            reserved_cash = abs(quantity * entry_price) + entry_commission
+            available_cash = float(portfolio.get('cash_balance') or 0.0)
+            if available_cash < reserved_cash:
+                raise ValueError(
+                    f'Orderbetrag {reserved_cash:.2f} übersteigt verfügbares Paper-Guthaben {available_cash:.2f}.'
+                )
 
-        order_number = int(state.get('next_order_number') or 1)
-        now = _now()
-        stored = {
-            **deepcopy(order),
-            'id': f'local-order-{order_number}',
-            'symbol': symbol,
-            'decision_mode': order.get('decision_mode') or 'manual',
-            'model_source': order.get('model_source') or 'manual',
-            'opened_at': now,
-            'created_at': now,
-        }
-        state['next_order_number'] = order_number + 1
-        state['manual_orders'].append(stored)
-        portfolio['cash_balance'] = float(portfolio.get('cash_balance') or 0.0) - reserved_cash
-        portfolio['updated_at'] = now
-        self._write(state)
-        return deepcopy(stored)
+            order_number = int(state.get('next_order_number') or 1)
+            now = _now()
+            stored = {
+                **deepcopy(order),
+                'id': f'local-order-{order_number}',
+                'symbol': symbol,
+                'decision_mode': order.get('decision_mode') or 'manual',
+                'model_source': order.get('model_source') or 'manual',
+                'opened_at': now,
+                'created_at': now,
+            }
+            state['next_order_number'] = order_number + 1
+            state['manual_orders'].append(stored)
+            portfolio['cash_balance'] = available_cash - reserved_cash
+            portfolio['updated_at'] = now
+            self._write(state)
+            return deepcopy(stored)
 
     def list_orders(self, status: str | None = None, limit: int = 100) -> list[dict[str, Any]]:
         orders = self._read()['manual_orders']
@@ -214,19 +230,26 @@ class LocalPersistenceService:
         return deepcopy(next((order for order in self._read()['manual_orders'] if order.get('id') == order_id), None))
 
     def close_order(self, order_id: str, closed_order: dict[str, Any]) -> dict[str, Any] | None:
-        state = self._read()
-        for index, order in enumerate(state['manual_orders']):
-            if order.get('id') != order_id:
-                continue
-            updated = {**order, **deepcopy(closed_order), 'closed_at': _now()}
-            state['manual_orders'][index] = updated
-            entry_notional = abs(float(order.get('quantity') or 0.0) * float(order.get('entry_price') or 0.0))
-            pnl_amount = float(updated.get('pnl_amount') or 0.0)
-            state['portfolio']['cash_balance'] = float(state['portfolio'].get('cash_balance') or 0.0) + entry_notional + pnl_amount
-            state['portfolio']['updated_at'] = updated['closed_at']
-            self._write(state)
-            return deepcopy(updated)
-        return None
+        with self._order_lock:
+            state = self._read()
+            for index, order in enumerate(state['manual_orders']):
+                if order.get('id') != order_id or order.get('status') != 'open':
+                    continue
+                updated = {**order, **deepcopy(closed_order), 'closed_at': _now()}
+                state['manual_orders'][index] = updated
+                entry_notional = abs(float(order.get('quantity') or 0.0) * float(order.get('entry_price') or 0.0))
+                entry_commission = float(order.get('entry_commission') or 0.0)
+                pnl_amount = float(updated.get('pnl_amount') or 0.0)
+                state['portfolio']['cash_balance'] = (
+                    float(state['portfolio'].get('cash_balance') or 0.0)
+                    + entry_notional
+                    + entry_commission
+                    + pnl_amount
+                )
+                state['portfolio']['updated_at'] = updated['closed_at']
+                self._write(state)
+                return deepcopy(updated)
+            return None
 
     def performance_summary(self) -> dict[str, Any]:
         state = self._read()
@@ -326,10 +349,11 @@ class LocalPersistenceService:
         closed_orders = [order for order in state['manual_orders'] if order.get('status') != 'open']
         realized = sum(float(order.get('pnl_amount') or 0.0) for order in closed_orders)
         open_notional = sum(abs(float(order.get('quantity') or 0.0) * float(order.get('entry_price') or 0.0)) for order in open_orders)
+        open_entry_commissions = sum(float(order.get('entry_commission') or 0.0) for order in open_orders)
         cash = float(portfolio.get('cash_balance') or 0.0)
         portfolio.update({
             'cash_balance': round(cash, 2),
-            'current_equity': round(cash + open_notional + total_unrealized, 2),
+            'current_equity': round(cash + open_notional + open_entry_commissions + total_unrealized, 2),
             'total_realized_pnl': round(realized, 2),
             'total_unrealized_pnl': round(total_unrealized, 2),
             'open_orders_count': len(open_orders),

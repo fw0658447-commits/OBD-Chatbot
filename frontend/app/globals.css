@@ -667,6 +667,38 @@ th { color: var(--muted); font-size: 13px; }
   margin: 0;
   font-weight: 700;
 }
+.manualTradeStatus {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid #abefc6;
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255,255,255,.74);
+}
+.manualTradeStatus.blocked {
+  border-color: #fecdca;
+  background: #fff6f5;
+}
+.manualTradeStatus span,
+.manualTradeStatus strong {
+  display: block;
+}
+.manualTradeStatus span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.manualTradeStatus strong {
+  margin: 3px 0;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+.manualTradeStatus p {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
 .accountTradeActions {
   display: flex;
   flex-wrap: wrap;
@@ -674,6 +706,36 @@ th { color: var(--muted); font-size: 13px; }
 }
 .accountTradeActions button {
   min-height: 42px;
+}
+.accountConfirmation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  background: rgba(255,255,255,.78);
+}
+.accountConfirmation.good { border-color: #abefc6; }
+.accountConfirmation.bad { border-color: #fecdca; background: #fff6f5; }
+.accountConfirmation span,
+.accountConfirmation strong {
+  display: block;
+}
+.accountConfirmation span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.accountConfirmation strong {
+  margin: 3px 0;
+  font-size: 16px;
+  letter-spacing: 0;
+}
+.accountConfirmation p {
+  margin: 0;
+  color: var(--muted);
+  overflow-wrap: anywhere;
 }
 .assetChoiceList {
   display: grid;
@@ -1424,8 +1486,9 @@ textarea {
   .modelAutomationActions button { width: 100%; }
   .accountHero { grid-template-columns: 1fr; }
   .accountActions { min-width: 0; }
-  .accountSummaryGrid, .accountForms, .accountActivityList, .accountActivityItem, .accountTradeGrid, .tradePreviewStrip, .selectedPositionRow { grid-template-columns: 1fr; }
+  .accountSummaryGrid, .accountForms, .accountActivityList, .accountActivityItem, .accountConfirmation, .accountTradeGrid, .manualTradeStatus, .tradePreviewStrip, .selectedPositionRow { grid-template-columns: 1fr; }
   .activityAmount { min-width: 0; text-align: left; }
+  .accountConfirmation button { width: 100%; }
   .accountTradeActions button, .positionActions button, .selectedPositionRow button { width: 100%; }
   .botOverviewGrid, .botTestGrid { grid-template-columns: 1fr; }
   .progressPill { align-self: flex-start; }

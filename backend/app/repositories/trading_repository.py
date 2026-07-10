@@ -463,27 +463,17 @@ class TradingRepository:
             portfolio = self._ensure_portfolio(connection)
             realized = _to_float(portfolio.get('total_realized_pnl')) or 0.0
             starting_balance = _to_float(portfolio.get('starting_balance')) or 10000.0
-            open_totals = connection.execute(
-                '''
-                SELECT COALESCE(SUM(ABS(quantity * entry_price)), 0) AS open_notional
-                FROM paper_orders
-                WHERE status = 'open'
-                '''
-            ).fetchone()
-            open_notional = _to_float(open_totals['open_notional']) or 0.0
             current_equity = starting_balance + realized + total_unrealized_pnl
-            cash_balance = current_equity - open_notional
             row = connection.execute(
                 '''
                 UPDATE paper_portfolio
                 SET total_unrealized_pnl = %s,
                     current_equity = %s,
-                    cash_balance = %s,
                     updated_at = NOW()
                 WHERE id = %s
                 RETURNING *
                 ''',
-                (total_unrealized_pnl, current_equity, cash_balance, portfolio['id']),
+                (total_unrealized_pnl, current_equity, portfolio['id']),
             ).fetchone()
             connection.commit()
             return _serialise_row(row) if row else None
@@ -749,7 +739,8 @@ class TradingRepository:
         ).fetchone()
         open_totals = connection.execute(
             '''
-            SELECT COALESCE(SUM(ABS(quantity * entry_price)), 0) AS open_notional
+            SELECT COALESCE(SUM(ABS(quantity * entry_price)), 0) AS open_notional,
+                   COALESCE(SUM(entry_commission), 0) AS open_entry_commissions
             FROM paper_orders
             WHERE status = 'open'
             '''
@@ -758,8 +749,9 @@ class TradingRepository:
         starting_balance = _to_float(portfolio.get('starting_balance')) or 10000.0
         unrealized_pnl = _to_float(portfolio.get('total_unrealized_pnl')) or 0.0
         open_notional = _to_float(open_totals['open_notional']) or 0.0
+        open_entry_commissions = _to_float(open_totals['open_entry_commissions']) or 0.0
         current_equity = starting_balance + realized_pnl + unrealized_pnl
-        cash_balance = current_equity - open_notional
+        cash_balance = starting_balance + realized_pnl - open_notional - open_entry_commissions
         connection.execute(
             '''
             UPDATE paper_portfolio
@@ -808,7 +800,7 @@ class TradingRepository:
             cash_balance = _to_float(portfolio.get('cash_balance')) or 0.0
             starting_balance = _to_float(portfolio.get('starting_balance')) or 0.0
             if transaction_type == 'withdrawal' and cash_balance < amount:
-                raise ValueError('Withdrawal amount exceeds available cash.')
+                raise ValueError('Auszahlungsbetrag übersteigt das verfügbare Paper-Guthaben.')
             new_cash = cash_balance + signed_amount
             new_equity = current_equity + signed_amount
             new_starting = starting_balance + signed_amount
@@ -885,11 +877,38 @@ class TradingRepository:
             ).fetchall()
             return [_serialise_row(row) for row in rows]
 
-    def manual_paper_order(self, symbol: str, order: dict[str, Any]) -> dict[str, Any] | None:
+    def manual_paper_order(
+        self,
+        symbol: str,
+        order: dict[str, Any],
+        max_open_trades: int | None = None,
+    ) -> dict[str, Any] | None:
         if not self.enabled:
             return None
         asset_id = self.get_or_create_asset(symbol=symbol)
         with get_connection() as connection:
+            portfolio = self._ensure_portfolio(connection)
+            locked_portfolio = connection.execute(
+                'SELECT * FROM paper_portfolio WHERE id = %s FOR UPDATE',
+                (portfolio['id'],),
+            ).fetchone()
+            open_orders = connection.execute(
+                "SELECT COUNT(*) AS count FROM paper_orders WHERE status = 'open'"
+            ).fetchone()
+            open_order_count = int(open_orders['count'])
+            if max_open_trades is not None and open_order_count >= max_open_trades:
+                raise ValueError(f'Positionslimit erreicht: {open_order_count}/{max_open_trades} offene Trades.')
+
+            reserved_cash = (
+                abs(float(order.get('quantity') or 0.0) * float(order.get('entry_price') or 0.0))
+                + float(order.get('entry_commission') or 0.0)
+            )
+            available_cash = _to_float(locked_portfolio['cash_balance']) or 0.0
+            if available_cash < reserved_cash:
+                raise ValueError(
+                    f'Orderbetrag {reserved_cash:.2f} übersteigt verfügbares Paper-Guthaben {available_cash:.2f}.'
+                )
+
             row = connection.execute(
                 """
                 INSERT INTO paper_orders (

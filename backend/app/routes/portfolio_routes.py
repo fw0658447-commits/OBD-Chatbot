@@ -3,7 +3,9 @@ from __future__ import annotations
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
+from app.config import settings
 from app.repositories.trading_repository import trading_repository
+from app.services.bot_runtime_service import bot_runtime_service
 from app.services.bot_engine import BotEngine
 from app.services.local_persistence_service import local_persistence_service
 from app.services.market_data_service import get_market_data_service
@@ -32,6 +34,31 @@ class ManualPaperOrderRequest(BaseModel):
     stop_loss: float | None = Field(default=None, gt=0)
     take_profit: float | None = Field(default=None, gt=0)
     note: str | None = None
+
+
+def _open_order_count() -> int:
+    if not trading_repository.available:
+        return len(local_persistence_service.list_orders(status='open', limit=500))
+    return trading_repository.count_open_orders()
+
+
+def _validate_manual_order_guard() -> dict:
+    config = bot_runtime_service.get_config()
+    if settings.bot_mode != 'paper' or settings.live_trading_enabled or not settings.live_trading_hard_locked:
+        raise HTTPException(status_code=403, detail='Manuelle Orders sind nur im gesicherten Paper-Modus erlaubt.')
+    if config.get('kill_switch_active'):
+        raise HTTPException(status_code=423, detail='Schutzstopp ist aktiv. Manuelle Paper-Trades sind blockiert.')
+    max_open_trades = int(config.get('max_open_trades') or settings.max_open_trades)
+    open_orders = _open_order_count()
+    if open_orders >= max_open_trades:
+        raise HTTPException(status_code=429, detail=f'Positionslimit erreicht: {open_orders}/{max_open_trades} offene Trades.')
+    return {'open_orders': open_orders, 'max_open_trades': max_open_trades}
+
+
+def _manual_order_http_error(exc: ValueError) -> HTTPException:
+    detail = str(exc)
+    status_code = 429 if detail.startswith('Positionslimit erreicht:') else 400
+    return HTTPException(status_code=status_code, detail=detail)
 
 
 @router.get('/paper')
@@ -84,7 +111,7 @@ def withdraw_virtual_cash(request: CashTransactionRequest):
         try:
             result = local_persistence_service.add_cash_transaction('withdrawal', request.amount, request.note)
         except ValueError as exc:
-            raise HTTPException(status_code=400, detail='Withdrawal amount exceeds available cash.')
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
         return {'status': 'withdrawn', **result, 'persistence': 'local_file'}
     try:
         result = trading_repository.add_cash_transaction('withdrawal', request.amount, request.note)
@@ -107,6 +134,7 @@ def reset_paper_account(request: ResetPaperAccountRequest):
 
 @router.post('/paper/manual-order')
 def create_manual_paper_order(request: ManualPaperOrderRequest):
+    guard = _validate_manual_order_guard()
     symbol = request.symbol.strip().upper()
     market = get_market_data_service()
     quote = market.get_quote(symbol)
@@ -138,17 +166,29 @@ def create_manual_paper_order(request: ManualPaperOrderRequest):
         'note': request.note,
         'quote_provider': quote.get('provider'),
         'quote_cache': quote.get('cache'),
+        'guard': guard,
     }
     if not trading_repository.available:
         try:
-            stored = local_persistence_service.add_manual_order(symbol=symbol, order=order)
+            stored = local_persistence_service.add_manual_order(
+                symbol=symbol,
+                order=order,
+                max_open_trades=guard['max_open_trades'],
+            )
         except ValueError as exc:
-            raise HTTPException(status_code=400, detail=str(exc)) from exc
+            raise _manual_order_http_error(exc) from exc
         return {
             'status': 'manual_order_opened',
             'order': stored,
             'portfolio': local_persistence_service.portfolio_summary(),
             'persistence': 'local_file',
         }
-    stored = trading_repository.manual_paper_order(symbol=symbol, order=order)
+    try:
+        stored = trading_repository.manual_paper_order(
+            symbol=symbol,
+            order=order,
+            max_open_trades=guard['max_open_trades'],
+        )
+    except ValueError as exc:
+        raise _manual_order_http_error(exc) from exc
     return {'status': 'manual_order_opened', 'order': stored, 'persistence': 'postgres'}
