@@ -275,6 +275,50 @@
       ],
       "assessment": "Prepare E2E remote access and diagnostics architecture; separate from mandatory OBD port requirements",
       "priority": "high"
+    },
+    {
+      "id": "UN_GRVA_R155_R156_PROPOSALS",
+      "kind": "draft_amendments",
+      "title": "GRVA/2026/28-30 – Vorschlaege zu UN R155 und R156",
+      "region": "GLOBAL",
+      "date": "2026-09",
+      "status": "working_proposals_not_equivalent_to_legal_effect",
+      "source": "https://unece.org/info/events/event/412104",
+      "topics": [
+        "cybersecurity",
+        "sums",
+        "ota",
+        "software_identity"
+      ],
+      "linked_rules": [
+        "UN_R155",
+        "UN_R156"
+      ],
+      "assessment": "Pruefen, welche Aenderungen in UN R155/R156 aus /28,/29,/30 sowie GRVA-26-11/12 beschlossen und national angewandt werden; keine vorgezogene Rechtswirkung",
+      "priority": "high"
+    },
+    {
+      "id": "CN_MEE_INSPECTION_2026_POLICY",
+      "kind": "adopted_policy_after_consultation",
+      "title": "MEE/SAMR Leitlinie zur Reform der Emissionspruefstellen und KI-Anomalieerkennung",
+      "region": "CHINA",
+      "date": "2026-09-18",
+      "status": "official_policy_published_2026_09_18_distinguish_from_future_technical_standards",
+      "source": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202609/t20260918_1166789.html",
+      "topics": [
+        "field",
+        "inspection",
+        "antitampering",
+        "ai_anomaly_detection",
+        "test_equipment",
+        "fraud_detection"
+      ],
+      "linked_rules": [
+        "CN_GB18352_6"
+      ],
+      "assessment": "MEE/SAMR Leitlinien fuer Emissionspruefstellen: qualifizierte Messmittel und Software, verbesserte Ueberwachung sowie Anomalieerkennung; nicht mit einer pauschalen fahrzeugseitigen OBD-KI-Pflicht verwechseln",
+      "priority": "high"
     }
-  ]
+  ],
+  "last_extended": "2026-11-21"
 }
