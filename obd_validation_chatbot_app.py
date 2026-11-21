@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Tuple
 import pandas as pd
 import streamlit as st
 from regulatory_knowledge import regulatory_memory_panel
+from obd_systemkoordination_core import answer_from_knowledge, knowledge_metrics
 
 try:
     from pypdf import PdfReader
@@ -17,7 +18,7 @@ try:
 except Exception:
     docx = None
 
-st.set_page_config(page_title="OBD Dokumentenvalidierungs-Chatbot", layout="wide")
+st.set_page_config(page_title="OBD Systemkoordination | Dokumentenvalidierung", layout="wide")
 
 SEVERITY_ORDER = {"High": 0, "Medium": 1, "Low": 2, "Info": 3}
 UNCLEAR_TERMS = [
@@ -342,8 +343,8 @@ def answer_question(question: str, findings: pd.DataFrame, dtc_df: pd.DataFrame,
     return "Ich kann Fragen zu Gesamtstatus, High-Findings, DTCs, Regeln, Evidence und naechsten Massnahmen beantworten. Beispiel: 'Welche High Findings gibt es?' oder 'Erklaere R011'."
 
 
-st.title("OBD Dokumentenvalidierungs-Chatbot")
-st.caption("Regelbasierte OBD-Dokumentenpruefung mit Chat-Erklaerung fuer DTC-Matrix, Testfallmatrix und Diagnose-Spezifikation.")
+st.title("OBD Systemkoordination – Dokumentenvalidierung")
+st.caption("Dokumentenvalidierung mit weltweitem Regulatorik-Kontext, System-/Safety-/Security-Wirkketten und Feld-/Service-Anforderungen. Keine Homologationsfreigabe.")
 
 regulatory_memory_panel()
 
@@ -429,5 +430,8 @@ else:
     if prompt:
         st.session_state.messages.append({"role": "user", "content": prompt})
         answer = answer_question(prompt, findings, st.session_state.dtc_df, st.session_state.tc_df, st.session_state.spec_text)
+        evidence_context = answer_from_knowledge(prompt)
+        if evidence_context:
+            answer += "\n\n" + evidence_context
         st.session_state.messages.append({"role": "assistant", "content": answer})
         st.rerun()
