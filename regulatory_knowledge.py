@@ -72,7 +72,8 @@ def regulatory_memory_panel():
             st.warning("Regulatorik-Wissensbasis fehlt im Deployment.")
             return
         q = st.text_input("Regelwerk, Markt, Behoerde oder E2E-Wirkkette suchen", key="regulatory_search", placeholder="z. B. KBA, GTUe, MLIT, OTA, GSP, Feld, SOVD, Zirkelschluss")
-        with st.expander("Fruehwarnung: Arbeitsgruppen, Pilotprojekte, Gesetzentwuerfe", expanded=False):
+        show_early = st.checkbox("Arbeitsgruppen, Pilotprojekte und Gesetzentwuerfe anzeigen", value=False, key="show_early")
+        if show_early:
             entries = read_early_warning()
             st.caption(f"{len(entries)} kuratierte Initiativen mit vorlaeufigem Rechtsstatus. Keine automatischen neuen Pflichten.")
             for entry in entries:
@@ -89,8 +90,9 @@ def regulatory_memory_panel():
             if not hits:
                 st.info("Kein entsprechender Eintrag in der Wissensbasis. Fehlender Treffer ist keine regulatorische Entwarnung.")
             for idx, hit in enumerate(hits, 1):
-                with st.expander(f"Treffer {idx}", expanded=(idx == 1)):
-                    st.markdown(hit)
+                st.markdown(f"**Treffer {idx}**")
+                st.markdown(hit[:6000])
+                st.divider()
         else:
             st.info("Recherche-Stand und Quellen sind persistent in der Datei hinterlegt. Einen Suchbegriff eingeben.")
             st.markdown("[Regulatorik-Wissensbasis](https://github.com/fw0658447-commits/OBD-Chatbot/blob/main/knowledge/obd_regulatory_memory_2026-11-21.md) | [E2E Behörden/Service/Feld](https://github.com/fw0658447-commits/OBD-Chatbot/blob/main/knowledge/e2e_authorities_service_field_chains.md)")
