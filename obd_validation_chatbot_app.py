@@ -5,6 +5,7 @@ from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
 import streamlit as st
+from regulatory_knowledge import regulatory_memory_panel
 
 try:
     from pypdf import PdfReader
@@ -343,6 +344,8 @@ def answer_question(question: str, findings: pd.DataFrame, dtc_df: pd.DataFrame,
 
 st.title("OBD Dokumentenvalidierungs-Chatbot")
 st.caption("Regelbasierte OBD-Dokumentenpruefung mit Chat-Erklaerung fuer DTC-Matrix, Testfallmatrix und Diagnose-Spezifikation.")
+
+regulatory_memory_panel()
 
 with st.sidebar:
     st.header("Dokumente")
