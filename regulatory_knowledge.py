@@ -4,6 +4,7 @@ Never interprets a knowledge hit as legal sign-off. The maintained knowledge
 file contains sources, legal statuses, applicability and open questions.
 """
 from pathlib import Path
+import json
 import re
 import streamlit as st
 
@@ -18,6 +19,28 @@ def read_regulatory_memory():
         return "\n\n".join(path.read_text(encoding="utf-8") for path in MEMORY_PATHS if path.exists())
     except OSError:
         return ""
+
+def read_early_warning():
+    path = Path(__file__).resolve().parent / "knowledge" / "early_warning_initiatives.json"
+    try:
+        return json.loads(path.read_text(encoding="utf-8")).get("initiatives", [])
+    except (OSError, ValueError):
+        return []
+
+
+def search_early_warning(query, limit=8):
+    tokens = set(re.findall(r"[\\w/-]{3,}", query.lower()))
+    matches = []
+    for record in read_early_warning():
+        haystack = " ".join(str(record.get(k,"")) for k in ("id","kind","title","region","status","topics","assessment")).lower()
+        score = sum(t in haystack for t in tokens)
+        if query.lower() in haystack:
+            score += 5
+        if score:
+            matches.append((score, record))
+    matches.sort(key=lambda p: p[0], reverse=True)
+    return [record for _,record in matches[:limit]]
+
 
 def _chunks(text):
     blocks = re.split(r"(?=^##\s+)", text, flags=re.M)
@@ -49,6 +72,18 @@ def regulatory_memory_panel():
             st.warning("Regulatorik-Wissensbasis fehlt im Deployment.")
             return
         q = st.text_input("Regelwerk, Markt, Behoerde oder E2E-Wirkkette suchen", key="regulatory_search", placeholder="z. B. KBA, GTUe, MLIT, OTA, GSP, Feld, SOVD, Zirkelschluss")
+        with st.expander("Fruehwarnung: Arbeitsgruppen, Pilotprojekte, Gesetzentwuerfe", expanded=False):
+            entries = read_early_warning()
+            st.caption(f"{len(entries)} kuratierte Initiativen mit vorlaeufigem Rechtsstatus. Keine automatischen neuen Pflichten.")
+            for entry in entries:
+                st.markdown(f"- **{entry['title']}** ({entry['region']}, {entry['status']}) — [Quelle]({entry['source']})")
+        if q.strip():
+            early = search_early_warning(q, limit=5)
+            if early:
+                st.markdown("**Fruehwarn-Treffer (Entwuerfe, Gremien und Forschung):**")
+                for entry in early:
+                    st.markdown(f"- **{entry['title']}** — {entry['assessment']} ([Primaerquelle]({entry['source']}))")
+
         if q.strip():
             hits = search_regulatory_memory(q)
             if not hits:
