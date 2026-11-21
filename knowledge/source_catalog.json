@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "curated_at": "2026-11-21",
+  "rules": {
+    "official_priority": true,
+    "downloads": "Only publicly available, verified official documents; no scraping of copyrighted/paywalled ISO/SAE/DieselNet/RAC full text",
+    "legal_effect": "Always check model year, category, jurisdiction and legal adoption. A standard, consultation, or UN GTR is not per se local binding law.",
+    "retention": "Metadata snapshot for all sources; PDFs only when explicitly tagged archive_pdf and hosted on approved official domains."
+  },
+  "sources": [
+    {
+      "id": "UNECE_WP29",
+      "title": "UNECE WP.29 200. Sitzung",
+      "issuer": "UNECE",
+      "market": "GLOBAL",
+      "source_class": "official",
+      "fetch_policy": "index",
+      "url": "https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session",
+      "domain": "REGULATION",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "UNECE_R155",
+      "title": "UNECE Cybersecurity / CSMS",
+      "issuer": "UNECE",
+      "market": "GLOBAL",
+      "source_class": "official",
+      "fetch_policy": "index",
+      "url": "https://unece.org/transport/vehicle-regulations-wp29",
+      "domain": "CYBERSECURITY",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_EURO7",
+      "title": "Euro 7 (EU) 2024/1257",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/1257/oj",
+      "domain": "EMISSIONS",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_2026_1764",
+      "title": "Battery, range, EV system power",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj",
+      "domain": "BATTERY",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_2026_1762",
+      "title": "Brake emissions Euro 7",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj",
+      "domain": "BRAKES",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_2018_858",
+      "title": "Type approval and RMI access",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/eli/reg/2018/858/oj",
+      "domain": "SERVICE",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_2014_45",
+      "title": "Roadworthiness 2014/45/EU",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/45/oj",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_PTIREVISION",
+      "title": "EU proposal COM 2025 180",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0180",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DE_STVZO_VIII",
+      "title": "StVZO Anlage VIII",
+      "issuer": "Gesetze im Internet",
+      "market": "GERMANY",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.gesetze-im-internet.de/stvzo_2012/anlage_viii.html",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DE_STVZO_VIIIA",
+      "title": "StVZO Anlage VIIIa",
+      "issuer": "Gesetze im Internet",
+      "market": "GERMANY",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.gesetze-im-internet.de/stvzo_2012/anlage_viiia.html",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DE_KBA",
+      "title": "KBA market surveillance and recalls",
+      "issuer": "KBA",
+      "market": "GERMANY",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.kba.de/",
+      "domain": "FIELD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DE_GTUE",
+      "title": "GTUe Hauptuntersuchung",
+      "issuer": "GTUe",
+      "market": "GERMANY",
+      "source_class": "inspection_organisation",
+      "fetch_policy": "metadata",
+      "url": "https://www.gtue.de/de/privatkunden/vorgeschriebene-fahrzeuguntersuchungen/hauptuntersuchung-hu",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DE_TUEV",
+      "title": "TUEV-Verband Hauptuntersuchung",
+      "issuer": "TUEV-Verband",
+      "market": "GERMANY",
+      "source_class": "inspection_organisation",
+      "fetch_policy": "metadata",
+      "url": "https://www.tuev-verband.de/mobilitaet/strasse/hauptuntersuchung",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "JAPAN_MLIT",
+      "title": "MLIT OBD-Kensa",
+      "issuer": "MLIT",
+      "market": "JAPAN",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mlit.go.jp/jidosha/jidosha_OBD.html",
+      "domain": "EPTI",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "USA_EPA",
+      "title": "EPA 40 CFR 86.1806-27",
+      "issuer": "eCFR",
+      "market": "USA_FEDERAL",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.ecfr.gov/current/title-40/section-86.1806-27",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "USA_CARB",
+      "title": "CARB OBD-II rulemaking",
+      "issuer": "CARB",
+      "market": "USA_CALIFORNIA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://ww2.arb.ca.gov/resources/documents/obd-ii-regulations-and-rulemaking",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "BRAZIL_IBAMA",
+      "title": "IBAMA IN 16/2025 IUMPR",
+      "issuer": "IBAMA",
+      "market": "BRAZIL",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.ibama.gov.br/component/legislacao/?force=1&legislacao=139520&view=legislacao",
+      "domain": "FIELD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "INDIA_MORTH",
+      "title": "MoRTH BS VI OBD Stage II B",
+      "issuer": "MoRTH",
+      "market": "INDIA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://morth.nic.in/sites/default/files/notifications_document/10-GSR%20809%28E%29%20dated%209th%20November%2C%202022%20OBD%202.pdf",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "CHINA_MEE",
+      "title": "China 6 amendment April 2026",
+      "issuer": "MEE",
+      "market": "CHINA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202604/t20260430_1150676.html",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "CHINA_STDS",
+      "title": "China standards MEE",
+      "issuer": "MEE",
+      "market": "CHINA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqydywrwpfbz/",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "UK_EURO7",
+      "title": "UK Government Response Euro 7",
+      "issuer": "DfT",
+      "market": "GREAT_BRITAIN",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.gov.uk/government/consultations/updating-the-minimum-emission-standard-for-new-road-vehicles/outcome/updating-the-minimum-emission-standard-for-new-road-vehicles-government-response",
+      "domain": "EMISSIONS",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "AUSTRALIA_ADR79",
+      "title": "ADR 79/05 emission control",
+      "issuer": "Australian legislation",
+      "market": "AUSTRALIA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.legislation.gov.au/F2024L00443/latest/details",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "ISO_17978_1",
+      "title": "SOVD ISO 17978-1",
+      "issuer": "ISO",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://www.iso.org/standard/85133.html",
+      "domain": "SOVD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "ISO_17978_4",
+      "title": "SOVD ISO/AWI 17978-4 remote access",
+      "issuer": "ISO",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://www.iso.org/standard/94689.html",
+      "domain": "REMOTE",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "ISO_21434",
+      "title": "Cybersecurity ISO/SAE 21434",
+      "issuer": "ISO",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://www.iso.org/standard/70918.html",
+      "domain": "CYBERSECURITY",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "ISO_26262",
+      "title": "Functional safety ISO 26262",
+      "issuer": "ISO",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://www.iso.org/standard/43464.html",
+      "domain": "SAFETY",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "ISO_24089",
+      "title": "Software update engineering ISO 24089",
+      "issuer": "ISO",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://www.iso.org/standard/77796.html",
+      "domain": "SUMS",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "SAE_J1979_2",
+      "title": "OBDonUDS SAE J1979-2",
+      "issuer": "SAE",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://saemobilus.sae.org/",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "SAE_J1939_73",
+      "title": "Heavy duty diagnostics SAE J1939-73",
+      "issuer": "SAE",
+      "market": "GLOBAL",
+      "source_class": "standards_publisher",
+      "fetch_policy": "link_only",
+      "url": "https://saemobilus.sae.org/",
+      "domain": "OBD",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "RA_CONSULTING",
+      "title": "RA Consulting diagnostic tools",
+      "issuer": "RA Consulting",
+      "market": "GLOBAL",
+      "source_class": "industry",
+      "fetch_policy": "link_only",
+      "url": "https://www.rac.de/",
+      "domain": "TOOLS",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "DIESELNET",
+      "title": "DieselNet emissions standards index",
+      "issuer": "DieselNet",
+      "market": "GLOBAL",
+      "source_class": "secondary",
+      "fetch_policy": "link_only",
+      "url": "https://dieselnet.com/standards/",
+      "domain": "RESEARCH",
+      "manual_applicability_review": true
+    }
+  ]
+}
