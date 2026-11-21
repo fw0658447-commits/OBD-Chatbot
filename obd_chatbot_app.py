@@ -184,7 +184,7 @@ def build_answer(question: str) -> str:
         if context:
             return context
         return (
-            "**OBD Systemkoordination**\\n\\n"
+            "**OBD Systemkoordination**\n\n"
             "Für diese Anfrage ist im derzeit kuratierten Bestand kein eindeutiger Treffer vorhanden. "
             "Bitte Markt, Fahrzeugart oder betroffene Fahrzeugfunktion ergänzen. "
             "Ein fehlender Treffer ist ausdrücklich keine regulatorische Entwarnung."
