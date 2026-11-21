@@ -348,6 +348,105 @@
       "url": "https://dieselnet.com/standards/",
       "domain": "RESEARCH",
       "manual_applicability_review": true
+    },
+    {
+      "id": "UNECE_EVE_WORK",
+      "title": "UNECE GRPE EVE working group documents",
+      "issuer": "UNECE",
+      "market": "GLOBAL",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://unece.org/transport/vehicle-regulations-wp29",
+      "domain": "REGULATORY_PIPELINE",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "UNECE_GRVA_WORK",
+      "title": "UNECE GRVA cyber OTA and automotive safety working papers",
+      "issuer": "UNECE",
+      "market": "GLOBAL",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://unece.org/transport/vehicle-regulations-wp29",
+      "domain": "REGULATORY_PIPELINE",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_2025_0097_COD",
+      "title": "EU roadworthiness reform legislative procedure 2025/0097(COD)",
+      "issuer": "EUR-Lex",
+      "market": "EU",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://eur-lex.europa.eu/procedure/EN/2025_97",
+      "domain": "LEGISLATIVE_PROPOSAL",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_CORDIS_DIAS",
+      "title": "CORDIS H2020 DIAS remote anti-tampering research pilot",
+      "issuer": "European Commission CORDIS",
+      "market": "EU",
+      "source_class": "official_project_record",
+      "fetch_policy": "metadata",
+      "url": "https://cordis.europa.eu/project/id/814951",
+      "domain": "RESEARCH_PILOT",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "EU_CORDIS_DIAS_RESULTS",
+      "title": "CORDIS DIAS published research results",
+      "issuer": "European Commission CORDIS",
+      "market": "EU",
+      "source_class": "official_project_record",
+      "fetch_policy": "metadata",
+      "url": "https://cordis.europa.eu/project/id/814951/results",
+      "domain": "RESEARCH_RESULTS",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "JP_MLIT_OBD_MONITOR",
+      "title": "Japan MLIT OBD inspection monitoring committee",
+      "issuer": "Japan MLIT",
+      "market": "JAPAN",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mlit.go.jp/jidosha/jidosha_OBD_MonitorConf.html",
+      "domain": "EPTI_WORKING_GROUP",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "JP_MLIT_2026_11_30",
+      "title": "Japan MLIT OBD-kensa 8th monitoring session announcement",
+      "issuer": "Japan MLIT",
+      "market": "JAPAN",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mlit.go.jp/report/press/jidosha09_hh_000368.html",
+      "domain": "EPTI_WORKING_GROUP",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "CN_MEE_2026_DRAFT",
+      "title": "China MEE 2026 vehicle emissions supervision consultation",
+      "issuer": "China MEE",
+      "market": "CHINA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202607/t20260724_1162695.html",
+      "domain": "CONSULTATION",
+      "manual_applicability_review": true
+    },
+    {
+      "id": "US_CARB_RULEMAKING",
+      "title": "CARB rulemaking consultations and public workshops",
+      "issuer": "CARB",
+      "market": "USA_CALIFORNIA",
+      "source_class": "official",
+      "fetch_policy": "metadata",
+      "url": "https://ww2.arb.ca.gov/rulemaking",
+      "domain": "RULEMAKING",
+      "manual_applicability_review": true
     }
   ]
 }
