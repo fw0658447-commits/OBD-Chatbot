@@ -1,8 +1,10 @@
 import json
 from pathlib import Path
 import streamlit as st
+from obd_systemkoordination_core import answer_from_knowledge, knowledge_metrics
+from regulatory_knowledge import regulatory_memory_panel
 
-st.set_page_config(page_title="OBD System Review Assistant", layout="wide")
+st.set_page_config(page_title="OBD Systemkoordination", layout="wide")
 
 KNOWLEDGE = {
     "obd eu7": {
@@ -178,14 +180,14 @@ def build_answer(question: str) -> str:
     topics = detect_topics(question)
 
     if not topics:
+        context = answer_from_knowledge(question)
+        if context:
+            return context
         return (
-            "**Einschätzung**\n\n"
-            "Ich erkenne kein klares Themencluster. Formuliere die Frage am besten zu OBD EU7, "
-            "Wirkkettenanalyse, OBM, OBF(C)M, Anti-Tampering, Felddatenanalyse oder HIL/virtueller Validierung.\n\n"
-            "**Sinnvolle nächste Frage**\n"
-            "- Welches Thema soll bewertet werden?\n"
-            "- Für wie viele Varianten?\n"
-            "- Geht es um Konzept, Review, Validierung oder Toolentwicklung?"
+            "**OBD Systemkoordination**\\n\\n"
+            "Für diese Anfrage ist im derzeit kuratierten Bestand kein eindeutiger Treffer vorhanden. "
+            "Bitte Markt, Fahrzeugart oder betroffene Fahrzeugfunktion ergänzen. "
+            "Ein fehlender Treffer ist ausdrücklich keine regulatorische Entwarnung."
         )
 
     blocks = ["**Fachliche Einschätzung**\n"]
@@ -222,6 +224,9 @@ def build_answer(question: str) -> str:
     blocks.append("- Prüf- und Nachweislogik je Thema festlegen")
     blocks.append("- Aufwand als Szenarien knapp / realistisch / robust schneiden")
 
+    grounded = answer_from_knowledge(question)
+    if grounded:
+        blocks.extend(["",grounded])
     return "\n".join(blocks)
 
 
@@ -230,8 +235,11 @@ def export_chat(messages):
     return json.dumps(export_payload, ensure_ascii=False, indent=2)
 
 
-st.title("OBD System Review Assistant")
-st.caption("Fachchatbot für OBD EU7, Wirkkettenanalyse, OBM, OBF(C)M, Anti-Tampering, Felddatenanalyse und HIL-/virtuelle Validierung")
+st.title("OBD Systemkoordination")
+st.caption("Weltweite Gesamtfahrzeug-System-Compliance: ICE/PHEV/BEV · OBD/OBM · Safety/Security · SOVD/Remote OBD · SUMS/OTA · ePTI · Service/Kunde · Feld")
+counts=knowledge_metrics()
+st.caption(f"Wissensbasis: {counts['sources']} Quellen · {counts['regulations_and_standards']} Regelwerke/Normen · {counts['relationships']} Verknüpfungen · {counts['initiatives']} Frühwarn-Initiativen")
+regulatory_memory_panel()
 
 with st.sidebar:
     st.header("Schnellstart")
@@ -260,9 +268,9 @@ if "messages" not in st.session_state:
         {
             "role": "assistant",
             "content": (
-                "Hallo Frank — ich bin deine erste OBD-/EU7-Chatbot-Basis. "
-                "Ich kann strukturierte Einschätzungen zu OBD EU7, Wirkkettenanalyse, OBM, OBF(C)M, "
-                "Anti-Tampering, Felddatenanalyse und HIL/virtueller Validierung liefern."
+                "Ich bin der OBD-Systemkoordination-Agent und bewerte globale Gesamtfahrzeug-Compliance über "
+                "Entwicklung, Zertifizierung, OTA, Service, Kunde und Feld. Quellenstatus und offene Fragen "
+                "werden getrennt ausgewiesen; keine automatische regulatorische Freigabe."
             ),
         }
     ]
