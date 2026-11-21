@@ -1,0 +1,35 @@
+name: OBD Systemkoordination quality checks
+
+on:
+  push:
+    paths:
+      - 'obd_systemkoordination_core.py'
+      - 'obd_chatbot_app.py'
+      - 'obd_validation_chatbot_app.py'
+      - 'regulatory_knowledge.py'
+      - 'knowledge/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/agent-quality.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile all agent Python modules
+        run: python -m compileall -q obd_systemkoordination_core.py obd_chatbot_app.py obd_validation_chatbot_app.py regulatory_knowledge.py scripts tests
+      - name: Run offline agent regression tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify source dependency graph
+        run: python scripts/validate_regulatory_graph.py
+      - name: Verify early-warning integrity
+        run: python scripts/check_early_warning.py
