@@ -25,13 +25,15 @@ jobs:
         run: python scripts/monitor_regulatory_sources.py
       - name: Discover cross-standard reference candidates
         run: python scripts/discover_cross_references.py
+      - name: Validate working groups, consultations and pilot projects
+        run: python scripts/check_early_warning.py
       - name: Validate cross-market regulatory graph and dependencies
         run: python scripts/validate_regulatory_graph.py
       - name: Commit snapshots if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add knowledge/source_status.json knowledge/regulatory_graph_review.json knowledge/regulatory_graph_review.md knowledge/regulatory_link_candidates.json
+          git add knowledge/source_status.json knowledge/regulatory_graph_review.json knowledge/regulatory_graph_review.md knowledge/regulatory_link_candidates.json knowledge/early_warning_review.json knowledge/early_warning_review.md
           if [ -d knowledge/official_documents ]; then git add knowledge/official_documents/; fi
           if ! git diff --cached --quiet; then
             git commit -m "chore: refresh international regulatory source snapshot"
