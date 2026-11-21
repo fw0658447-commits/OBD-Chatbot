@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-21",
+  "policy": "Early-warning only. Each working group, consultation, pilot, standard draft, and legislative proposal must retain its own legal status. Do not infer enacted law, market date, or type approval from a research demonstration.",
+  "initiatives": [
+    {
+      "id": "UN_EVE_2026",
+      "kind": "working_group",
+      "title": "UNECE GRPE / IWG EVE – GTR 21/22/25",
+      "region": "GLOBAL",
+      "date": "2026-01",
+      "status": "working_papers_2026",
+      "source": "https://unece.org/info/Transport/events/409612",
+      "topics": [
+        "battery_durability",
+        "ev_power",
+        "in_use_verification"
+      ],
+      "linked_rules": [
+        "UN_GTR22",
+        "GTR20"
+      ],
+      "assessment": "GTR 21/22/25 revisions; distinguish draft/GRPE recommendations from WP29 approval and regional incorporation",
+      "priority": "high"
+    },
+    {
+      "id": "UN_CSOTA_2026",
+      "kind": "working_group",
+      "title": "UNECE GRVA IWG CS/OTA – R155/R156 interpretation and ToR",
+      "region": "GLOBAL",
+      "date": "2026-09",
+      "status": "proposal_and_group_activity",
+      "source": "https://unece.org/info/events/event/412104",
+      "topics": [
+        "cybersecurity",
+        "sums",
+        "ota",
+        "software_identity"
+      ],
+      "linked_rules": [
+        "UN_R155",
+        "UN_R156",
+        "ISO_24089",
+        "ISO_21434"
+      ],
+      "assessment": "Track R155/R156 interpretation, multi-stage approval, software identification and post-registration updates",
+      "priority": "high"
+    },
+    {
+      "id": "UN_GRVA_ADS_2026",
+      "kind": "working_group",
+      "title": "UNECE GRVA ADS/AI/AEBS/ESRI task forces",
+      "region": "GLOBAL",
+      "date": "2026-09",
+      "status": "working_papers",
+      "source": "https://unece.org/info/events/event/412104",
+      "topics": [
+        "functional_safety",
+        "adas",
+        "anomaly_detection",
+        "field_data"
+      ],
+      "linked_rules": [
+        "UN_R155",
+        "ISO_26262"
+      ],
+      "assessment": "Watch requirements for ADS data, fault monitoring, validation scenarios, AEBS false positives and safety incident handling",
+      "priority": "medium"
+    },
+    {
+      "id": "EU_PTI_2025_0097",
+      "kind": "legislative_proposal",
+      "title": "EU Roadworthiness Package COM(2025)180 / 2025/0097(COD)",
+      "region": "EU",
+      "date": "2025-04-24",
+      "status": "legislative_procedure_ongoing_as_of_2026-11-21",
+      "source": "https://eur-lex.europa.eu/procedure/EN/2025_97",
+      "topics": [
+        "epti",
+        "odometer",
+        "service",
+        "remote_diagnostics",
+        "tampering"
+      ],
+      "linked_rules": [
+        "EU_2018_858",
+        "DE_STVZO_VIIIA"
+      ],
+      "assessment": "Changes to PTI, inspection data and possible shared service and vehicle history chains; proposals not yet binding",
+      "priority": "high"
+    },
+    {
+      "id": "JP_OBD_MONITOR8",
+      "kind": "working_group",
+      "title": "Japan MLIT OBD-kensa 8th monitoring meeting",
+      "region": "JAPAN",
+      "date": "2026-11-30",
+      "status": "scheduled_as_of_2026-11-20",
+      "source": "https://www.mlit.go.jp/report/press/jidosha09_hh_000368.html",
+      "topics": [
+        "epti",
+        "dtc",
+        "scan_tools",
+        "service"
+      ],
+      "linked_rules": [
+        "JAPAN_OBD_KENSA"
+      ],
+      "assessment": "Follow meeting outcomes on operational field problems, scan tools and inspection scope; date is event not new law",
+      "priority": "high"
+    },
+    {
+      "id": "JP_OBD_MEETING_DOCS",
+      "kind": "working_group",
+      "title": "Japan MLIT OBD inspection monitoring materials",
+      "region": "JAPAN",
+      "date": "2026-06-24",
+      "status": "meeting_archive",
+      "source": "https://www.mlit.go.jp/jidosha/jidosha_OBD_MonitorConf.html",
+      "topics": [
+        "epti",
+        "safety",
+        "diagnostics",
+        "field"
+      ],
+      "linked_rules": [
+        "JAPAN_OBD_KENSA"
+      ],
+      "assessment": "Inspect documented field issues and solutions; identify technical requirements only when legal notice confirms",
+      "priority": "high"
+    },
+    {
+      "id": "CN_MEE_SURVEILLANCE_2026",
+      "kind": "public_consultation",
+      "title": "China MEE draft new-vehicle emissions compliance supervision",
+      "region": "CHINA",
+      "date": "2026-07-23",
+      "status": "consultation_closed_2026-08-05_followup_unknown",
+      "source": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk06/202607/t20260724_1162695.html",
+      "topics": [
+        "field",
+        "cop",
+        "obd",
+        "enforcement"
+      ],
+      "linked_rules": [
+        "CN_GB18352_6"
+      ],
+      "assessment": "Track proposed conformity supervision across production and field; do not confuse with final China 7",
+      "priority": "high"
+    },
+    {
+      "id": "CN_RDE_HJ1477_2026",
+      "kind": "regulatory_transition",
+      "title": "China HJ 1477-2026 Light-Duty RDE methods",
+      "region": "CHINA",
+      "date": "2026-09-01",
+      "status": "official_standard_effective",
+      "source": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202606/t20260611_1159121.html",
+      "topics": [
+        "rde",
+        "emissions",
+        "validation",
+        "test_methods"
+      ],
+      "linked_rules": [
+        "CN_GB18352_6"
+      ],
+      "assessment": "Cross-check any China 7 proposal against already-effective RDE test method; verify exact application to homologation",
+      "priority": "high"
+    },
+    {
+      "id": "US_CARB_HD_2026",
+      "kind": "rulemaking",
+      "title": "California HD Omnibus/LCFS/Emergency vehicle rulemaking",
+      "region": "USA_CALIFORNIA",
+      "date": "2026-09-25",
+      "status": "submitted_to_oal_final_approval_not_verified",
+      "source": "https://ww2.arb.ca.gov/rulemaking/2025/orhdomnibus",
+      "topics": [
+        "hd",
+        "obd",
+        "emissions",
+        "certification"
+      ],
+      "linked_rules": [
+        "CARB_1968_2",
+        "US_86_1806_27"
+      ],
+      "assessment": "Separate heavy-duty engine/vehicle from LD rules, track OAL and Federal/EPA differences",
+      "priority": "medium"
+    },
+    {
+      "id": "EU_DIAS_PILOT",
+      "kind": "completed_research_pilot",
+      "title": "H2020 DIAS – Smart Adaptive Remote Diagnostic Antitampering Systems",
+      "region": "EU",
+      "date": "2019-09-01/2022-10-31",
+      "status": "completed_research_project_not_law",
+      "source": "https://cordis.europa.eu/project/id/814951",
+      "topics": [
+        "antitampering",
+        "anomaly_detection",
+        "remote_diagnostics",
+        "cybersecurity",
+        "field"
+      ],
+      "linked_rules": [
+        "UN_R155",
+        "EU_2024_1257",
+        "ISO_21434"
+      ],
+      "assessment": "Anomaly and tamper detection on vehicle, prototype ECU/CCU and cloud demonstration; evidence of engineering feasibility only",
+      "priority": "high"
+    },
+    {
+      "id": "CN_ICV_PILOT_2026",
+      "kind": "reported_pilot",
+      "title": "China pilot on intelligent and connected vehicle access (GRVA-24-21)",
+      "region": "CHINA",
+      "date": "2026-01",
+      "status": "pilot_progress_presentation_not_norm",
+      "source": "https://unece.org/info/Transport/events/408709",
+      "topics": [
+        "connected_vehicle",
+        "safety",
+        "software",
+        "field"
+      ],
+      "linked_rules": [
+        "UN_R155",
+        "ISO_26262"
+      ],
+      "assessment": "Track link to national MIIT/road operation rules; pilot presentation not itself legally binding",
+      "priority": "medium"
+    },
+    {
+      "id": "UN_CSOTA_R156_INTERPRET",
+      "kind": "draft_guidance",
+      "title": "UNECE GRVA/2026/5 Interpretation Document UN R156",
+      "region": "GLOBAL",
+      "date": "2026-01",
+      "status": "proposed_interpretation_at_grva_24",
+      "source": "https://unece.org/info/Transport/events/408709",
+      "topics": [
+        "sums",
+        "ota",
+        "versioning",
+        "type_approval"
+      ],
+      "linked_rules": [
+        "UN_R156",
+        "ISO_24089"
+      ],
+      "assessment": "Track guidance interpretation separately from amendments to legally enforceable UN R156",
+      "priority": "high"
+    },
+    {
+      "id": "ISO_SOVD_REMOTE_P4",
+      "kind": "standards_work_in_progress",
+      "title": "ISO/AWI 17978-4 SOVD Remote Access",
+      "region": "GLOBAL",
+      "date": "2026",
+      "status": "draft_standard_not_mandatory",
+      "source": "https://www.iso.org/standard/94689.html",
+      "topics": [
+        "sovd",
+        "remote_obd",
+        "service",
+        "cybersecurity"
+      ],
+      "linked_rules": [
+        "ISO_17978_1",
+        "UN_R155"
+      ],
+      "assessment": "Prepare E2E remote access and diagnostics architecture; separate from mandatory OBD port requirements",
+      "priority": "high"
+    }
+  ]
+}
