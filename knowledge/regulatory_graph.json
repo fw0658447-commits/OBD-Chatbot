@@ -1,0 +1,369 @@
+{
+  "version": 1,
+  "updated": "2026-11-21",
+  "principles": [
+    "No automatic legal incorporation from topical similarity",
+    "Norm citations are directional",
+    "Any change to target source must flag dependents",
+    "Cycle in engineering interaction is not by itself a legal contradiction"
+  ],
+  "nodes": [
+    {
+      "id": "UN_GTR22",
+      "name": "UN GTR 22 Battery Durability",
+      "kind": "un_gtr",
+      "market": "GLOBAL",
+      "status": "harmonized_not_automatically_binding",
+      "source_id": "UNECE_WP29"
+    },
+    {
+      "id": "EU_2024_1257",
+      "name": "Euro 7 framework",
+      "kind": "eu_regulation",
+      "market": "EU",
+      "status": "in_force",
+      "source_id": "EU_EURO7"
+    },
+    {
+      "id": "EU_2025_1706",
+      "name": "Euro 7 light-duty implementing regulation",
+      "kind": "eu_implementing",
+      "market": "EU",
+      "status": "in_force",
+      "source_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj"
+    },
+    {
+      "id": "EU_2026_1764",
+      "name": "Euro 7 battery durability implementing amendment",
+      "kind": "eu_amendment",
+      "market": "EU",
+      "status": "in_force",
+      "source_id": "EU_2026_1764"
+    },
+    {
+      "id": "UN_R154",
+      "name": "UN R154 04 series Annex C1",
+      "kind": "un_regulation",
+      "market": "GLOBAL",
+      "status": "regional_applicability_check",
+      "source_url": "https://unece.org/transport/vehicle-regulations-wp29"
+    },
+    {
+      "id": "UN_R83",
+      "name": "UN R83 09 series Annex 5",
+      "kind": "un_regulation",
+      "market": "GLOBAL",
+      "status": "regional_applicability_check",
+      "source_url": "https://unece.org/transport/vehicle-regulations-wp29"
+    },
+    {
+      "id": "UN_R155",
+      "name": "UN R155 cybersecurity",
+      "kind": "un_regulation",
+      "market": "GLOBAL",
+      "status": "regional_applicability_check",
+      "source_id": "UNECE_R155"
+    },
+    {
+      "id": "UN_R156",
+      "name": "UN R156 software updates",
+      "kind": "un_regulation",
+      "market": "GLOBAL",
+      "status": "regional_applicability_check",
+      "source_url": "https://unece.org/transport/vehicle-regulations-wp29"
+    },
+    {
+      "id": "ISO_17978_1",
+      "name": "ISO 17978-1 SOVD",
+      "kind": "standard",
+      "market": "GLOBAL",
+      "status": "published_nonbinding",
+      "source_id": "ISO_17978_1"
+    },
+    {
+      "id": "ISO_24089",
+      "name": "ISO 24089 software update engineering",
+      "kind": "standard",
+      "market": "GLOBAL",
+      "status": "published_nonbinding",
+      "source_id": "ISO_24089"
+    },
+    {
+      "id": "ISO_21434",
+      "name": "ISO/SAE 21434 cybersecurity engineering",
+      "kind": "standard",
+      "market": "GLOBAL",
+      "status": "published_nonbinding",
+      "source_id": "ISO_21434"
+    },
+    {
+      "id": "EU_2018_858",
+      "name": "EU type approval and RMI",
+      "kind": "eu_regulation",
+      "market": "EU",
+      "status": "in_force",
+      "source_id": "EU_2018_858"
+    },
+    {
+      "id": "US_86_1806_27",
+      "name": "US EPA OBD 40 CFR 86.1806-27",
+      "kind": "us_federal",
+      "market": "USA_FEDERAL",
+      "status": "in_force",
+      "source_id": "USA_EPA"
+    },
+    {
+      "id": "CARB_1968_2",
+      "name": "CARB 13 CCR 1968.2 OBD II 2022",
+      "kind": "california_regulation",
+      "market": "USA_CALIFORNIA",
+      "status": "regional_applicability_check",
+      "source_id": "USA_CARB"
+    },
+    {
+      "id": "SAE_J1979_2",
+      "name": "SAE J1979-2 OBDonUDS",
+      "kind": "standard",
+      "market": "GLOBAL",
+      "status": "published_nonbinding",
+      "source_id": "SAE_J1979_2"
+    },
+    {
+      "id": "DE_STVZO_VIIIA",
+      "name": "German StVZO Annex VIIIa",
+      "kind": "national_inspection",
+      "market": "GERMANY",
+      "status": "in_force",
+      "source_id": "DE_STVZO_VIIIA"
+    },
+    {
+      "id": "JAPAN_OBD_KENSA",
+      "name": "Japan OBD-Kensa",
+      "kind": "national_inspection",
+      "market": "JAPAN",
+      "status": "in_force",
+      "source_id": "JAPAN_MLIT"
+    },
+    {
+      "id": "CN_GBT46991_1",
+      "name": "China GB/T46991.1-2025 battery durability",
+      "kind": "national_standard",
+      "market": "CHINA",
+      "status": "recommended_standard",
+      "source_url": "https://openstd.samr.gov.cn/"
+    },
+    {
+      "id": "CN_GB18352_6",
+      "name": "China GB18352.6-2016 amendment 2026",
+      "kind": "national_regulation",
+      "market": "CHINA",
+      "status": "in_force",
+      "source_id": "CHINA_MEE"
+    },
+    {
+      "id": "GTR20",
+      "name": "UN GTR 20 EV Safety",
+      "kind": "un_gtr",
+      "market": "GLOBAL",
+      "status": "harmonized_not_automatically_binding",
+      "source_id": "UNECE_WP29"
+    },
+    {
+      "id": "ISO_26262",
+      "name": "ISO 26262 Functional Safety",
+      "kind": "standard",
+      "market": "GLOBAL",
+      "status": "published_nonbinding",
+      "source_id": "ISO_26262"
+    }
+  ],
+  "edges": [
+    {
+      "id": "L001",
+      "from": "EU_2026_1764",
+      "to": "EU_2025_1706",
+      "relation": "amends",
+      "basis": "EU 2026/1764 title and Article 1",
+      "source_url": "https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj",
+      "confidence": "verified_text",
+      "market_scope": "check_both",
+      "requires_human_review": false
+    },
+    {
+      "id": "L002",
+      "from": "EU_2025_1706",
+      "to": "EU_2024_1257",
+      "relation": "implements",
+      "basis": "EU 2025/1706 legal basis",
+      "source_url": "https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj",
+      "confidence": "verified_text",
+      "market_scope": "check_both",
+      "requires_human_review": false
+    },
+    {
+      "id": "L003",
+      "from": "EU_2026_1764",
+      "to": "UN_R154",
+      "relation": "explicit_reference",
+      "basis": "EU 2026/1764 recital 1; UN R154 04 series",
+      "source_url": "https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj",
+      "confidence": "verified_text",
+      "market_scope": "check_both",
+      "requires_human_review": false
+    },
+    {
+      "id": "L004",
+      "from": "EU_2026_1764",
+      "to": "UN_R83",
+      "relation": "explicit_reference",
+      "basis": "EU 2026/1764 recital 1; UN R83 09 series",
+      "source_url": "https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj",
+      "confidence": "verified_text",
+      "market_scope": "check_both",
+      "requires_human_review": false
+    },
+    {
+      "id": "L005",
+      "from": "UN_GTR22",
+      "to": "EU_2026_1764",
+      "relation": "shared_technical_subject",
+      "basis": "Battery durability, SOCE; not an asserted incorporation of GTR directly",
+      "source_url": "https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L006",
+      "from": "US_86_1806_27",
+      "to": "CARB_1968_2",
+      "relation": "incorporates_with_exceptions",
+      "basis": "40 CFR 86.1806-27(a) references CARB 2022 with exclusions",
+      "source_url": "https://www.ecfr.gov/current/title-40/section-86.1806-27",
+      "confidence": "verified_text",
+      "market_scope": "check_both",
+      "requires_human_review": false
+    },
+    {
+      "id": "L007",
+      "from": "CARB_1968_2",
+      "to": "SAE_J1979_2",
+      "relation": "explicit_reference",
+      "basis": "13 CCR 1968.2(d)(9.2.2), subject to applicability",
+      "source_url": "https://ww2.arb.ca.gov/resources/documents/obd-ii-regulations-and-rulemaking",
+      "confidence": "needs_clause_review",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L008",
+      "from": "UN_R155",
+      "to": "ISO_21434",
+      "relation": "related_technical_standard",
+      "basis": "CSMS and cybersecurity engineering may be aligned; ISO not automatically required",
+      "source_url": "https://unece.org/transport/vehicle-regulations-wp29",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L009",
+      "from": "UN_R156",
+      "to": "ISO_24089",
+      "relation": "related_technical_standard",
+      "basis": "SUMS and software-update engineering may be aligned; ISO not automatically required",
+      "source_url": "https://unece.org/transport/vehicle-regulations-wp29",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L010",
+      "from": "UN_GTR22",
+      "to": "UN_R156",
+      "relation": "shared_system_chain",
+      "basis": "BMS algorithm OTA change can affect reported SOCE; impact analysis needed",
+      "source_url": "https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L011",
+      "from": "EU_2018_858",
+      "to": "ISO_17978_1",
+      "relation": "shared_service_chain",
+      "basis": "RMI access vs technical SOVD diagnostics, not legal incorporation",
+      "source_url": "https://eur-lex.europa.eu/eli/reg/2018/858/oj",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L012",
+      "from": "DE_STVZO_VIIIA",
+      "to": "EU_2018_858",
+      "relation": "jurisdictional_intersection",
+      "basis": "German PTI/ePTI vs EU type approval/service data; obligations not equivalent",
+      "source_url": "https://www.gesetze-im-internet.de/stvzo_2012/anlage_viiia.html",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L013",
+      "from": "JAPAN_OBD_KENSA",
+      "to": "DE_STVZO_VIIIA",
+      "relation": "similar_inspection_topic",
+      "basis": "Both inspect vehicles but must never transpose national DTC lists",
+      "source_url": "https://www.mlit.go.jp/jidosha/jidosha_OBD.html",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L014",
+      "from": "CN_GBT46991_1",
+      "to": "UN_GTR22",
+      "relation": "shared_technical_subject",
+      "basis": "Battery durability standards; legal status in China independent of UN GTR",
+      "source_url": "https://openstd.samr.gov.cn/",
+      "confidence": "needs_clause_review",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L015",
+      "from": "CN_GB18352_6",
+      "to": "US_86_1806_27",
+      "relation": "similar_obd_topic",
+      "basis": "OBD demo/calibration traceability; no equivalent regulatory thresholds assumed",
+      "source_url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202604/t20260430_1150676.html",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L016",
+      "from": "GTR20",
+      "to": "UN_GTR22",
+      "relation": "shared_vehicle_function",
+      "basis": "BMS/HV safety vs battery durability; different acceptance criteria",
+      "source_url": "https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    },
+    {
+      "id": "L017",
+      "from": "GTR20",
+      "to": "ISO_26262",
+      "relation": "shared_safety_topic",
+      "basis": "Battery safety vs functional safety; no blanket incorporation",
+      "source_url": "https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session",
+      "confidence": "engineering_hypothesis",
+      "market_scope": "check_both",
+      "requires_human_review": true
+    }
+  ]
+}
