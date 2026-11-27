@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-11-27T15:10:55.523814+00:00",
+  "nodes": 21,
+  "edges": 17,
+  "catalog_sources": 40,
+  "verified_explicit_links": 5,
+  "links_requiring_review": 12,
+  "integrity_issues": [],
+  "metadata_changed_source_ids": [],
+  "directly_affected_nodes": [],
+  "potentially_impacted_nodes": [],
+  "potential_engineering_cycles": [],
+  "methodology": "Identifier and graph-integrity checks + changed-source impact propagation. Not full text semantic verification; explicit citations need periodic expert review. No inferred legal obligations.",
+  "source_status_present": true
+}

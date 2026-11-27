@@ -1,0 +1,134 @@
+{
+  "review_date_utc": "2026-11-27T15:10:55.480400+00:00",
+  "initiatives_count": 15,
+  "by_kind": {
+    "adopted_policy_after_consultation": 1,
+    "completed_research_pilot": 1,
+    "draft_amendments": 1,
+    "draft_guidance": 1,
+    "legislative_proposal": 1,
+    "public_consultation": 1,
+    "regulatory_transition": 1,
+    "reported_pilot": 1,
+    "rulemaking": 1,
+    "standards_work_in_progress": 1,
+    "working_group": 5
+  },
+  "linked_regulations": {
+    "CARB_1968_2": [
+      "US_CARB_HD_2026"
+    ],
+    "CN_GB18352_6": [
+      "CN_MEE_INSPECTION_2026_POLICY",
+      "CN_MEE_SURVEILLANCE_2026",
+      "CN_RDE_HJ1477_2026"
+    ],
+    "DE_STVZO_VIIIA": [
+      "EU_PTI_2025_0097"
+    ],
+    "EU_2018_858": [
+      "EU_PTI_2025_0097"
+    ],
+    "EU_2024_1257": [
+      "EU_DIAS_PILOT"
+    ],
+    "GTR20": [
+      "UN_EVE_2026"
+    ],
+    "ISO_17978_1": [
+      "ISO_SOVD_REMOTE_P4"
+    ],
+    "ISO_21434": [
+      "EU_DIAS_PILOT",
+      "UN_CSOTA_2026"
+    ],
+    "ISO_24089": [
+      "UN_CSOTA_2026",
+      "UN_CSOTA_R156_INTERPRET"
+    ],
+    "ISO_26262": [
+      "CN_ICV_PILOT_2026",
+      "UN_GRVA_ADS_2026"
+    ],
+    "JAPAN_OBD_KENSA": [
+      "JP_OBD_MEETING_DOCS",
+      "JP_OBD_MONITOR8"
+    ],
+    "UN_GTR22": [
+      "UN_EVE_2026"
+    ],
+    "UN_R155": [
+      "CN_ICV_PILOT_2026",
+      "EU_DIAS_PILOT",
+      "ISO_SOVD_REMOTE_P4",
+      "UN_CSOTA_2026",
+      "UN_GRVA_ADS_2026",
+      "UN_GRVA_R155_R156_PROPOSALS"
+    ],
+    "UN_R156": [
+      "UN_CSOTA_2026",
+      "UN_CSOTA_R156_INTERPRET",
+      "UN_GRVA_R155_R156_PROPOSALS"
+    ],
+    "US_86_1806_27": [
+      "US_CARB_HD_2026"
+    ]
+  },
+  "findings": [
+    {
+      "id": "UN_EVE_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/Transport/events/409612"
+    },
+    {
+      "id": "UN_CSOTA_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/events/event/412104"
+    },
+    {
+      "id": "UN_GRVA_ADS_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/events/event/412104"
+    },
+    {
+      "id": "CN_RDE_HJ1477_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk01/202606/t20260611_1159121.html"
+    },
+    {
+      "id": "US_CARB_HD_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://ww2.arb.ca.gov/rulemaking/2025/orhdomnibus"
+    },
+    {
+      "id": "CN_ICV_PILOT_2026",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/Transport/events/408709"
+    },
+    {
+      "id": "UN_CSOTA_R156_INTERPRET",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/Transport/events/408709"
+    },
+    {
+      "id": "UN_GRVA_R155_R156_PROPOSALS",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://unece.org/info/events/event/412104"
+    },
+    {
+      "id": "CN_MEE_INSPECTION_2026_POLICY",
+      "kind": "source_not_yet_curated",
+      "severity": "medium",
+      "url": "https://www.mee.gov.cn/xxgk2018/xxgk/xxgk03/202609/t20260918_1166789.html"
+    }
+  ],
+  "caution": "Early-warning discovery. An initiative, pilot, draft or consultation does not create binding obligations; a source change is a review trigger only."
+}

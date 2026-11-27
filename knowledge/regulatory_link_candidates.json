@@ -1,0 +1,642 @@
+{
+  "generated_utc": "2026-11-27T15:10:55.436047+00:00",
+  "status": "ALL_UNVERIFIED_CANDIDATE_LINKS",
+  "warning": "Co-occurrence in curated prose is only a discovery signal, NEVER legal incorporation or technical equivalence.",
+  "proposed": [
+    {
+      "from": "EU_2024_1257",
+      "to": "EU_2026_1764",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2024_1257",
+      "to": "SAE_J1979_2",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2024_1257",
+      "to": "UN_GTR22",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "3. **[G] Euro 7 Grundverordnung (EU) 2024/1257 (konsolidierte Fassung 2026):** M1/N1 neue Typen 29.11.2026, Neufahrzeuge 29.11.2027; spaetere Termine fuer schwere Klassen und Spezialfaelle. OBD, OBM, OBFCM, Batteriezustand, off-board Daten und Antitampering sind getrennte Pflichten; Art. 4 verlangt Schutz u.a. von Batterie/BMS, ECU, OBD/OBM, Kilometerzaehler, elektrischen Antrieben. **EU-MPR statt allgemeiner GTR 22:** M1 SOCE 80%/72%; N1 75%/67% fuer die jeweiligen 5 J/100 tkm- bzw. 8 J/160 tkm-Fenster (pruefen, ob Sonderregime zutrifft). Kein SOCR-Grenzwert aus leerer Tabelle erfinden. Quell"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2024_1257",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2024_1257",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2024_1257",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        },
+        {
+          "file": "e2e_authorities_service_field_chains.md",
+          "excerpt": "- Deutschland StVZO Anlagen VIII/VIIIa: https://www.gesetze-im-internet.de/stvzo_2012/anlage_viii.html und https://www.gesetze-im-internet.de/stvzo_2012/anlage_viiia.html - KBA https://www.kba.de/ - MLIT https://www.mlit.go.jp/jidosha/jidosha_OBD.html - EPA https://www.ecfr.gov/current/title-40/section-86.1806-27 - CARB https://ww2.arb.ca.gov/resources/documents/obd-ii-regulations-and-rulemaking - EU https://eur-lex.europa.eu/eli/reg/2024/1257/oj - IBAMA https://www.gov.br/ibama/pt-br/assuntos/emissoes-e-residuos/emissoes/elaboracao-de-relatorio-iumpr - Indien https://www.morth.gov.in/ - UNECE"
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "SAE_J1979_2",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "UN_GTR22",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "UN_R154",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "4. **[G] Euro 7 Durchfuehrungsverordnung (EU) 2025/1706, geaendert durch (EU) 2026/1764 (13.07., Amtsblatt 22.07.2026):** Annex XV Battery Durability, Art. 10a In-Service Conformity; UN R154 04 series Annex C1 / Level 1A fuer technische Basis, EU-spezifische SOCE-MPR ersetzen R154-Werte; UN R83 Annex 5 fuer ISC. Annex XVII low-temp EV range (Art. 10b optional ISC), Annex XIX EV system power (Art. 10c optional ISC). Hersteller-Konformitaetserklaerung und dokumentierte Familien. **OBFCM fuer PEVs hat besonderen Uebergang bis 01.01.2030** nach Art. 2; andere Teile haben andere Anwendungstermine, "
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "4. **[G] Euro 7 Durchfuehrungsverordnung (EU) 2025/1706, geaendert durch (EU) 2026/1764 (13.07., Amtsblatt 22.07.2026):** Annex XV Battery Durability, Art. 10a In-Service Conformity; UN R154 04 series Annex C1 / Level 1A fuer technische Basis, EU-spezifische SOCE-MPR ersetzen R154-Werte; UN R83 Annex 5 fuer ISC. Annex XVII low-temp EV range (Art. 10b optional ISC), Annex XIX EV system power (Art. 10c optional ISC). Hersteller-Konformitaetserklaerung und dokumentierte Familien. **OBFCM fuer PEVs hat besonderen Uebergang bis 01.01.2030** nach Art. 2; andere Teile haben andere Anwendungstermine, "
+        }
+      ]
+    },
+    {
+      "from": "EU_2025_1706",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2026_1764",
+      "to": "GTR20",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "EU_2026_1764",
+      "to": "SAE_J1979_2",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2026_1764",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2026_1764",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "EU_2026_1764",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "GTR20",
+      "to": "UN_R154",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "GTR20",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "GTR20",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "GTR20",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "GTR20",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "ISO_26262",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "e2e_authorities_service_field_chains.md",
+          "excerpt": "5. **Safety-Warnung oder ePTI-DTC → HU/OBD-Kensa-Befund → Werkstatt/SOVD-Fehlerauslesung → OEM-Feldanalyse → Safety/R155/R156/R100/ISO 26262 pruefen → Korrektur und Revalidierung.** Laenderdatenhoheit, Datenschutz und Zugaenglichkeit beachten."
+        }
+      ]
+    },
+    {
+      "from": "ISO_26262",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "e2e_authorities_service_field_chains.md",
+          "excerpt": "5. **Safety-Warnung oder ePTI-DTC → HU/OBD-Kensa-Befund → Werkstatt/SOVD-Fehlerauslesung → OEM-Feldanalyse → Safety/R155/R156/R100/ISO 26262 pruefen → Korrektur und Revalidierung.** Laenderdatenhoheit, Datenschutz und Zugaenglichkeit beachten."
+        }
+      ]
+    },
+    {
+      "from": "SAE_J1979_2",
+      "to": "UN_GTR22",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "SAE_J1979_2",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "SAE_J1979_2",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "SAE_J1979_2",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- UNECE GTR22 Amendment 2 /207 und Technical Report /208: https://unece.org/transport/events/wp29-world-forum-harmonization-vehicle-regulations-200th-session - EU-Ratsbeschluss 2026/2542: https://eur-lex.europa.eu/eli/dec/2026/2542/oj - Euro7 Basis: https://eur-lex.europa.eu/eli/reg/2024/1257/oj - Euro7 LD: https://eur-lex.europa.eu/eli/reg_impl/2025/1706/oj - Euro7 Battery ISC / EV Range / Power: https://eur-lex.europa.eu/eli/reg_impl/2026/1764/oj - Euro7 Brake: https://eur-lex.europa.eu/eli/reg_impl/2026/1762/oj - Euro7 Brake delegated: https://eur-lex.europa.eu/eli/reg_del/2026/1214/oj - Eu"
+        }
+      ]
+    },
+    {
+      "from": "UN_GTR22",
+      "to": "UN_R154",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_GTR22",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_GTR22",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_GTR22",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R154",
+      "to": "UN_R155",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R154",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R154",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "4. **[G] Euro 7 Durchfuehrungsverordnung (EU) 2025/1706, geaendert durch (EU) 2026/1764 (13.07., Amtsblatt 22.07.2026):** Annex XV Battery Durability, Art. 10a In-Service Conformity; UN R154 04 series Annex C1 / Level 1A fuer technische Basis, EU-spezifische SOCE-MPR ersetzen R154-Werte; UN R83 Annex 5 fuer ISC. Annex XVII low-temp EV range (Art. 10b optional ISC), Annex XIX EV system power (Art. 10c optional ISC). Hersteller-Konformitaetserklaerung und dokumentierte Familien. **OBFCM fuer PEVs hat besonderen Uebergang bis 01.01.2030** nach Art. 2; andere Teile haben andere Anwendungstermine, "
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "UN_R154",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R155",
+      "to": "UN_R156",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "17. **[U/G je Genehmigungsmarkt] UN R155 / R156:** Cybersecurity Management und Software Update Management sind eigene rechtliche Regelungsfamilien. Bei der Compliance-Wirkkette pruefen, ob manipulierte Monitorparameter, Softwareupdates, Steuergeraetewechsel, Zertifizierungswerte und Offboard-Daten die Konformitaet nach Euro7, OBD und Safety beeinflussen. Keine generische 'R155 schreibt fuer jeden SOCE DTC' Behauptung. Quelle: https://unece.org/transport/road-transport/reference-documents."
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        }
+      ]
+    },
+    {
+      "from": "UN_R155",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R155",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R156",
+      "to": "UN_R83",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R156",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    },
+    {
+      "from": "UN_R83",
+      "to": "US_86_1806_27",
+      "suggested_relation": "co_mentioned",
+      "confidence": "unverified",
+      "human_review_required": true,
+      "evidence": [
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "| System-Cluster | Direktes Gesetz/Norm | Gemeinsamer technischer Beruehrungspunkt | Geforderter koordinierter Nachweis | Grenze der Aussage | |---|---|---|---|---| | SOCE/SOCR, BMS, OBD | UN GTR22, EU2026/1764, R154/R83, China GB/T46991.1 | Sensoren, Energie-, Temperatur- und Referenzalgorithmen, Daten-Port | Part A/B/ggf. C, Familien, BMS-Version, Referenzmessung, Port-Auslesung | China GB/T ist nicht automatisch Pflicht, USA nicht 1:1 | | PHEV Emissions-OBD / Antrieb | EPA 86.1806-27+CARB1968.2; EU7; China6 | Motorstart-, Rekuperations-, Lade-/SOC-Strategie | Emissionsfehlermonitoring, MIL/"
+        },
+        {
+          "file": "obd_regulatory_memory_2026-11-21.md",
+          "excerpt": "- [O] Offizielles Protokoll/Global Registry zur AC.3-Annahme von GTR22 Amendment 2 vom 17.-20.11.2026 sowie nationale Implementierungsdaten. - [O] Euro7: finale technische OBD/OBM/Antitampering-/Datentransfer-Implementierungen, regionale Erweiterungen, UN R83/R154-Anwendungsstand je Genehmigung. - [O] China7 LD: erster amtlich publizierter finaler Entwurf/Standard, Light-/Heavy-Duty-Trennung, BEV/PHEV Scope, OBD-Demo, ePTI, Remote Reporting, Starttermine. - [O] USA CARB ACC-II-/Waiver-/Gerichtsstand und konkrete Fortgeltung batteriebezogener Pflichten je Bundesstaat; EPA 86.1806-27 aktualisier"
+        }
+      ]
+    }
+  ]
+}
